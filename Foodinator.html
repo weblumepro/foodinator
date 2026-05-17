@@ -751,7 +751,10 @@
       .section {
         padding: var(--section-y) 0;
       }
-      #favourites, #reviews, #order, #contact {
+      #favourites,
+      #reviews,
+      #order,
+      #contact {
         content-visibility: auto;
         contain-intrinsic-size: 0 800px;
       }
@@ -1818,7 +1821,7 @@
         pointer-events: none;
       }
 
-      /* ===== Intro animation ===== */
+      /* ===== Introduction animation ===== */
       #intro {
         position: fixed;
         inset: 0;
@@ -1870,7 +1873,9 @@
         animation: introFadeIn 0.6s ease 0.2s forwards;
       }
       @keyframes introFadeIn {
-        to { opacity: 1; }
+        to {
+          opacity: 1;
+        }
       }
       .intro-slash {
         position: absolute;
@@ -2868,7 +2873,7 @@
         const bot = document.querySelector(".intro-half.bot");
         const slash = document.getElementById("intro-slash");
         const skip = document.getElementById("intro-skip");
-        const fill     = document.getElementById("intro-progress-fill");
+        const fill = document.getElementById("intro-progress-fill");
         const progress = document.getElementById("intro-progress-wrap");
 
         document.body.style.overflow = "hidden";
@@ -2878,7 +2883,8 @@
           if (!vid.duration || rafPending) return;
           rafPending = true;
           requestAnimationFrame(() => {
-            fill.style.transform = "scaleX(" + (vid.currentTime / vid.duration) + ")";
+            fill.style.transform =
+              "scaleX(" + vid.currentTime / vid.duration + ")";
             rafPending = false;
           });
         });
