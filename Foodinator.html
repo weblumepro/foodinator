@@ -1,1935 +1,2966 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Foodinator — Asian Fusion · East Village</title>
-<meta name="description" content="Foodinator — Asian fusion, anime-inspired interior, open late in the East Village." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Foodinator — Asian Fusion · East Village</title>
+    <meta
+      name="description"
+      content="Foodinator — Asian fusion, anime-inspired interior, open late in the East Village."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root {
-    --ink:        #0d0c0a;
-    --ink-2:      #16140f;
-    --ink-3:      #221f17;
-    --line:       rgba(245, 239, 227, 0.12);
-    --line-strong:rgba(245, 239, 227, 0.22);
-    --cream:      #f5efe3;
-    --cream-2:    #ebe2cf;
-    --cream-soft: rgba(245, 239, 227, 0.65);
-    --cream-faint:rgba(245, 239, 227, 0.42);
+    <style>
+      :root {
+        --ink: #0d0c0a;
+        --ink-2: #16140f;
+        --ink-3: #221f17;
+        --line: rgba(245, 239, 227, 0.12);
+        --line-strong: rgba(245, 239, 227, 0.22);
+        --cream: #f5efe3;
+        --cream-2: #ebe2cf;
+        --cream-soft: rgba(245, 239, 227, 0.65);
+        --cream-faint: rgba(245, 239, 227, 0.42);
 
-    --accent:     #d94a2a;
-    --accent-2:   #e9824f;
-    --accent-glow:rgba(217, 74, 42, .4);
+        --accent: #d94a2a;
+        --accent-2: #e9824f;
+        --accent-glow: rgba(217, 74, 42, 0.4);
 
-    --display:    'Anton', 'Arial Narrow', sans-serif;
-    --body:       'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif;
-    --serif:      'Cormorant Garamond', Georgia, serif;
-    --mono:       'JetBrains Mono', ui-monospace, monospace;
-    --jp:         'Noto Sans JP', 'DM Sans', sans-serif;
+        --display: "Anton", "Arial Narrow", sans-serif;
+        --body: "DM Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --mono: "JetBrains Mono", ui-monospace, monospace;
+        --jp: "Noto Sans JP", "DM Sans", sans-serif;
 
-    --max:        1360px;
-    --pad-x:      clamp(16px, 2vw, 36px);
-    --section-y:  clamp(72px, 9vw, 140px);
-  }
+        --max: 1360px;
+        --pad-x: clamp(16px, 2vw, 36px);
+        --section-y: clamp(72px, 9vw, 140px);
+      }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--ink);
-    color: var(--cream);
-    font-family: var(--body);
-    font-size: 16px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--cream);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border: 0;
+        background: none;
+        color: inherit;
+      }
 
-  /* Grain overlay */
-  .grain {
-    position: relative;
-  }
-  .grain::after {
-    content: "";
-    position: absolute; inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    mix-blend-mode: overlay;
-    opacity: .55;
-    z-index: 1;
-  }
+      /* Grain overlay */
+      .grain {
+        position: relative;
+      }
+      .grain::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode: overlay;
+        opacity: 0.55;
+        z-index: 1;
+      }
 
-  /* ===== Type primitives ===== */
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: inline-flex; align-items: center; gap: 10px;
-  }
-  .eyebrow::before {
-    content: ""; display: inline-block;
-    width: 22px; height: 1px; background: var(--accent);
-  }
-  .eyebrow.center { justify-content: center; }
-  .eyebrow.cream { color: var(--cream-soft); }
-  .eyebrow.cream::before { background: var(--cream-faint); }
+      /* ===== Type primitives ===== */
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 1px;
+        background: var(--accent);
+      }
+      .eyebrow.center {
+        justify-content: center;
+      }
+      .eyebrow.cream {
+        color: var(--cream-soft);
+      }
+      .eyebrow.cream::before {
+        background: var(--cream-faint);
+      }
 
-  .display {
-    font-family: var(--display);
-    font-weight: 400;
-    line-height: .92;
-    letter-spacing: -.005em;
-    text-transform: uppercase;
-  }
+      .display {
+        font-family: var(--display);
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: -0.005em;
+        text-transform: uppercase;
+      }
 
-  .italic-mark {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    text-transform: none;
-    letter-spacing: 0;
-    color: var(--accent);
-  }
+      .italic-mark {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--accent);
+      }
 
-  /* ===== Buttons ===== */
-  .btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-family: var(--body);
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: .04em;
-    padding: 14px 22px;
-    border-radius: 2px;
-    background: var(--accent);
-    color: #fff;
-    border: 1px solid var(--accent);
-    transition: background .2s ease, transform .15s ease, box-shadow .25s ease;
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-  }
-  .btn:hover {
-    background: var(--accent-2);
-    box-shadow: 0 8px 28px -8px var(--accent-glow);
-    transform: translateY(-1px);
-  }
-  .btn .arrow {
-    width: 14px; height: 14px;
-    transition: transform .25s ease;
-  }
-  .btn:hover .arrow { transform: translateX(3px); }
-  .btn.ghost {
-    background: transparent;
-    color: var(--cream);
-    border-color: var(--line-strong);
-  }
-  .btn.ghost:hover {
-    background: rgba(245, 239, 227, 0.06);
-    border-color: var(--cream);
-    box-shadow: none;
-  }
-  .btn.dark {
-    background: var(--ink);
-    color: var(--cream);
-    border-color: var(--ink);
-  }
-  .btn.dark:hover { background: var(--ink-2); box-shadow: 0 8px 28px -8px rgba(0,0,0,.4); }
-  .btn.lg {
-    padding: 18px 28px;
-    font-size: 15px;
-  }
-  .btn.xl {
-    padding: 22px 34px;
-    font-size: 16px;
-    letter-spacing: .06em;
-  }
-  .btn.xl .arrow { width: 18px; height: 18px; }
+      /* ===== Buttons ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        padding: 14px 22px;
+        border-radius: 2px;
+        background: var(--accent);
+        color: #fff;
+        border: 1px solid var(--accent);
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+      }
+      .btn:hover {
+        background: var(--accent-2);
+        box-shadow: 0 8px 28px -8px var(--accent-glow);
+        transform: translateY(-1px);
+      }
+      .btn .arrow {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.25s ease;
+      }
+      .btn:hover .arrow {
+        transform: translateX(3px);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--cream);
+        border-color: var(--line-strong);
+      }
+      .btn.ghost:hover {
+        background: rgba(245, 239, 227, 0.06);
+        border-color: var(--cream);
+        box-shadow: none;
+      }
+      .btn.dark {
+        background: var(--ink);
+        color: var(--cream);
+        border-color: var(--ink);
+      }
+      .btn.dark:hover {
+        background: var(--ink-2);
+        box-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.4);
+      }
+      .btn.lg {
+        padding: 18px 28px;
+        font-size: 15px;
+      }
+      .btn.xl {
+        padding: 22px 34px;
+        font-size: 16px;
+        letter-spacing: 0.06em;
+      }
+      .btn.xl .arrow {
+        width: 18px;
+        height: 18px;
+      }
 
-  /* ===== Nav ===== */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 50;
-    transition: background .3s ease, border-color .3s ease, padding .3s ease, backdrop-filter .3s ease;
-    border-bottom: 1px solid transparent;
-  }
-  .nav-inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 20px var(--pad-x);
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-  .logo {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 26px;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    color: var(--cream);
-  }
-  .logo .mark {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 22px;
-    line-height: 0;
-    transform: translateY(-2px);
-  }
-  .logo .ja {
-    font-family: var(--jp);
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--cream-faint);
-    letter-spacing: .15em;
-    text-transform: none;
-    margin-left: 2px;
-    opacity: 1;
-  }
-  .nav-links {
-    display: flex; align-items: center; gap: 28px;
-    margin-left: 28px;
-  }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: .03em;
-    color: var(--cream-soft);
-    position: relative;
-    transition: color .2s ease;
-  }
-  .nav-links a:hover { color: var(--cream); }
-  .nav-links a::after {
-    content: ""; position: absolute;
-    left: 0; right: 0; bottom: -6px;
-    height: 1px; background: var(--accent);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform .25s ease;
-  }
-  .nav-links a:hover::after { transform: scaleX(1); }
+      /* ===== Nav ===== */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        transition:
+          background 0.3s ease,
+          border-color 0.3s ease,
+          padding 0.3s ease,
+          backdrop-filter 0.3s ease;
+        border-bottom: 1px solid transparent;
+      }
+      .nav-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 20px var(--pad-x);
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 10px;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 26px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--cream);
+      }
+      .logo .mark {
+        color: var(--accent);
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 22px;
+        line-height: 0;
+        transform: translateY(-2px);
+      }
+      .logo .ja {
+        font-family: var(--jp);
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--cream-faint);
+        letter-spacing: 0.15em;
+        text-transform: none;
+        margin-left: 2px;
+        opacity: 1;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        margin-left: 28px;
+      }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: var(--cream-soft);
+        position: relative;
+        transition: color 0.2s ease;
+      }
+      .nav-links a:hover {
+        color: var(--cream);
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        height: 1px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+      }
 
-  .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 14px; }
-  .nav-cta .reservation {
-    font-size: 12px; color: var(--cream-soft);
-    letter-spacing: .04em;
-  }
-  .nav-cta .reservation b { color: var(--cream); font-weight: 600; }
+      .nav-cta {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .nav-cta .reservation {
+        font-size: 12px;
+        color: var(--cream-soft);
+        letter-spacing: 0.04em;
+      }
+      .nav-cta .reservation b {
+        color: var(--cream);
+        font-weight: 600;
+      }
 
-  .nav.scrolled {
-    background: rgba(13, 12, 10, 0.78);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-color: var(--line);
-  }
-  .nav.scrolled .nav-inner { padding-top: 14px; padding-bottom: 14px; }
+      .nav.scrolled {
+        background: rgba(13, 12, 10, 0.78);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-color: var(--line);
+      }
+      .nav.scrolled .nav-inner {
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
 
-  .hamburger {
-    display: none;
-    width: 40px; height: 40px;
-    border: 1px solid var(--line-strong);
-    border-radius: 2px;
-    align-items: center; justify-content: center;
-    flex-direction: column; gap: 5px;
-  }
-  .hamburger span {
-    width: 18px; height: 1.5px; background: var(--cream);
-    transition: transform .25s ease, opacity .2s ease;
-  }
-  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+      .hamburger {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--line-strong);
+        border-radius: 2px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .hamburger span {
+        width: 18px;
+        height: 1.5px;
+        background: var(--cream);
+        transition:
+          transform 0.25s ease,
+          opacity 0.2s ease;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
 
-  .mobile-menu {
-    position: fixed; inset: 0;
-    background: var(--ink);
-    z-index: 49;
-    padding: 100px var(--pad-x) 48px;
-    display: flex; flex-direction: column;
-    gap: 4px;
-    transform: translateY(-100%);
-    transition: transform .35s cubic-bezier(.65,0,.35,1);
-  }
-  .mobile-menu.open { transform: translateY(0); }
-  .mobile-menu a {
-    font-family: var(--display);
-    font-size: 36px;
-    letter-spacing: .02em;
-    text-transform: uppercase;
-    color: var(--cream);
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .mobile-menu .btn { margin-top: 24px; align-self: flex-start; }
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        background: var(--ink);
+        z-index: 49;
+        padding: 100px var(--pad-x) 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transform: translateY(-100%);
+        transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      .mobile-menu.open {
+        transform: translateY(0);
+      }
+      .mobile-menu a {
+        font-family: var(--display);
+        font-size: 36px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--cream);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .mobile-menu .btn {
+        margin-top: 24px;
+        align-self: flex-start;
+      }
 
-  /* ===== HERO ===== */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    color: var(--cream);
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    overflow: hidden;
-    z-index: 0;
-  }
-  .hero-bg .scene {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(60% 50% at 22% 78%, rgba(217, 74, 42, .35) 0%, transparent 60%),
-      radial-gradient(45% 40% at 82% 24%, rgba(228, 124, 64, .22) 0%, transparent 60%),
-      radial-gradient(35% 35% at 65% 65%, rgba(86, 33, 22, .55) 0%, transparent 70%),
-      linear-gradient(160deg, #1a1410 0%, #0a0907 70%);
-    transform: scale(1.05);
-    animation: heroPan 22s ease-in-out infinite alternate;
-  }
-  .hero-bg .scene::after {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(255, 200, 150, .18) 0, transparent 2px),
-      radial-gradient(circle at 80% 20%, rgba(255, 180, 120, .12) 0, transparent 2px),
-      radial-gradient(circle at 30% 80%, rgba(255, 210, 160, .15) 0, transparent 2.5px),
-      radial-gradient(circle at 70% 70%, rgba(255, 200, 140, .1) 0, transparent 2px),
-      radial-gradient(circle at 50% 40%, rgba(255, 195, 145, .13) 0, transparent 1.5px),
-      radial-gradient(circle at 15% 60%, rgba(255, 220, 180, .14) 0, transparent 2px),
-      radial-gradient(circle at 90% 55%, rgba(255, 190, 140, .12) 0, transparent 2px);
-    background-size: 60% 60%, 50% 50%, 70% 70%, 40% 40%, 55% 55%, 65% 65%, 50% 50%;
-    background-repeat: no-repeat;
-  }
-  .hero-bg .lantern {
-    position: absolute;
-    width: 240px; height: 240px;
-    border-radius: 50%;
-    filter: blur(60px);
-    mix-blend-mode: screen;
-  }
-  /* overt intensity: lanterns at ~1.54x base opacity */
-  .hero-bg .lantern.l1 { background: var(--accent); top: 12%; left: -4%; opacity: .85; animation: drift 14s ease-in-out infinite alternate; }
-  .hero-bg .lantern.l2 { background: #f0a050; top: 52%; right: 8%; width: 320px; height: 320px; opacity: .49; animation: drift 18s ease-in-out infinite alternate-reverse; }
-  .hero-bg .lantern.l3 { background: #6a3a90; bottom: -8%; left: 38%; width: 380px; opacity: .39; animation: drift 24s ease-in-out infinite alternate; }
-  .hero-bg .lantern.l4 { background: #3b6db0; top: 8%; right: 18%; width: 180px; height: 180px; opacity: .39; animation: drift 16s ease-in-out infinite alternate-reverse; }
-  @keyframes drift {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(40px, -30px); }
-  }
-  @keyframes heroPan {
-    0% { transform: scale(1.05) translate(0,0); }
-    100% { transform: scale(1.1) translate(-2%, -1.5%); }
-  }
-  .hero-bg::after {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(13,12,10,.4) 0%, rgba(13,12,10,.15) 30%, rgba(13,12,10,.55) 80%, rgba(13,12,10,.92) 100%),
-      linear-gradient(90deg, rgba(13,12,10,.7) 0%, rgba(13,12,10,.1) 50%, rgba(13,12,10,.45) 100%);
-    z-index: 2;
-  }
-  /* overt scanlines: opacity 0.42 */
-  .hero-bg .scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 4px);
-    z-index: 3;
-    opacity: .42;
-    pointer-events: none;
-  }
-  .hero-bg .hero-grain {
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    mix-blend-mode: overlay;
-    z-index: 4;
-    pointer-events: none;
-  }
+      /* ===== HERO ===== */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        min-height: 100svh;
+        color: var(--cream);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .hero-bg .scene {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            60% 50% at 22% 78%,
+            rgba(217, 74, 42, 0.35) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            45% 40% at 82% 24%,
+            rgba(228, 124, 64, 0.22) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            35% 35% at 65% 65%,
+            rgba(86, 33, 22, 0.55) 0%,
+            transparent 70%
+          ),
+          linear-gradient(160deg, #1a1410 0%, #0a0907 70%);
+        transform: scale(1.05);
+        animation: heroPan 22s ease-in-out infinite alternate;
+      }
+      .hero-bg .scene::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 200, 150, 0.18) 0,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 180, 120, 0.12) 0,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 30% 80%,
+            rgba(255, 210, 160, 0.15) 0,
+            transparent 2.5px
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(255, 200, 140, 0.1) 0,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 195, 145, 0.13) 0,
+            transparent 1.5px
+          ),
+          radial-gradient(
+            circle at 15% 60%,
+            rgba(255, 220, 180, 0.14) 0,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 90% 55%,
+            rgba(255, 190, 140, 0.12) 0,
+            transparent 2px
+          );
+        background-size:
+          60% 60%,
+          50% 50%,
+          70% 70%,
+          40% 40%,
+          55% 55%,
+          65% 65%,
+          50% 50%;
+        background-repeat: no-repeat;
+      }
+      .hero-bg .lantern {
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        filter: blur(60px);
+        mix-blend-mode: screen;
+      }
+      /* overt intensity: lanterns at ~1.54x base opacity */
+      .hero-bg .lantern.l1 {
+        background: var(--accent);
+        top: 12%;
+        left: -4%;
+        opacity: 0.85;
+        animation: drift 14s ease-in-out infinite alternate;
+      }
+      .hero-bg .lantern.l2 {
+        background: #f0a050;
+        top: 52%;
+        right: 8%;
+        width: 320px;
+        height: 320px;
+        opacity: 0.49;
+        animation: drift 18s ease-in-out infinite alternate-reverse;
+      }
+      .hero-bg .lantern.l3 {
+        background: #6a3a90;
+        bottom: -8%;
+        left: 38%;
+        width: 380px;
+        opacity: 0.39;
+        animation: drift 24s ease-in-out infinite alternate;
+      }
+      .hero-bg .lantern.l4 {
+        background: #3b6db0;
+        top: 8%;
+        right: 18%;
+        width: 180px;
+        height: 180px;
+        opacity: 0.39;
+        animation: drift 16s ease-in-out infinite alternate-reverse;
+      }
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(40px, -30px);
+        }
+      }
+      @keyframes heroPan {
+        0% {
+          transform: scale(1.05) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.1) translate(-2%, -1.5%);
+        }
+      }
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(13, 12, 10, 0.4) 0%,
+            rgba(13, 12, 10, 0.15) 30%,
+            rgba(13, 12, 10, 0.55) 80%,
+            rgba(13, 12, 10, 0.92) 100%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(13, 12, 10, 0.7) 0%,
+            rgba(13, 12, 10, 0.1) 50%,
+            rgba(13, 12, 10, 0.45) 100%
+          );
+        z-index: 2;
+      }
+      /* overt scanlines: opacity 0.42 */
+      .hero-bg .scanlines {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.18) 0 1px,
+          transparent 1px 4px
+        );
+        z-index: 3;
+        opacity: 0.42;
+        pointer-events: none;
+      }
+      .hero-bg .hero-grain {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode: overlay;
+        z-index: 4;
+        pointer-events: none;
+      }
 
-  .hero-content {
-    position: relative; z-index: 5;
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 var(--pad-x);
-    min-height: 100vh; min-height: 100svh;
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 80px;
-    padding-top: 140px;
-  }
-  /* overt katakana: opacity 1 (1.4 clamped to 1) */
-  .hero-katakana {
-    position: absolute;
-    top: 0; bottom: 0;
-    right: var(--pad-x);
-    z-index: 5;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 14px;
-    font-family: var(--jp);
-    font-weight: 300;
-    font-size: 13px;
-    letter-spacing: .25em;
-    color: var(--cream-faint);
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    pointer-events: none;
-    opacity: 1;
-  }
-  .hero-katakana::before, .hero-katakana::after {
-    content: ""; width: 1px; height: 80px;
-    background: var(--cream-faint); opacity: .4;
-  }
+      .hero-content {
+        position: relative;
+        z-index: 5;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--pad-x);
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 80px;
+        padding-top: 140px;
+      }
+      /* overt katakana: opacity 1 (1.4 clamped to 1) */
+      .hero-katakana {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: var(--pad-x);
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        font-family: var(--jp);
+        font-weight: 300;
+        font-size: 13px;
+        letter-spacing: 0.25em;
+        color: var(--cream-faint);
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        pointer-events: none;
+        opacity: 1;
+      }
+      .hero-katakana::before,
+      .hero-katakana::after {
+        content: "";
+        width: 1px;
+        height: 80px;
+        background: var(--cream-faint);
+        opacity: 0.4;
+      }
 
-  /* overt kanji: opacity 0.10 */
-  .hero-kanji-watermark {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -42%);
-    font-family: var(--jp);
-    font-size: clamp(280px, 38vw, 540px);
-    font-weight: 700;
-    color: rgba(245, 239, 227, 0.10);
-    z-index: 4;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
+      /* overt kanji: opacity 0.10 */
+      .hero-kanji-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -42%);
+        font-family: var(--jp);
+        font-size: clamp(280px, 38vw, 540px);
+        font-weight: 700;
+        color: rgba(245, 239, 227, 0.1);
+        z-index: 4;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
 
-  .hero-meta-top {
-    position: absolute;
-    top: 100px;
-    left: var(--pad-x);
-    right: var(--pad-x);
-    z-index: 5;
-    display: flex; justify-content: space-between;
-    align-items: center; gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--cream-soft);
-  }
-  .hero-meta-top .dot {
-    display: inline-block; width: 6px; height: 6px;
-    border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 12px var(--accent);
-    margin-right: 8px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: .5; transform: scale(.7); }
-  }
+      .hero-meta-top {
+        position: absolute;
+        top: 100px;
+        left: var(--pad-x);
+        right: var(--pad-x);
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--cream-soft);
+      }
+      .hero-meta-top .dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+        margin-right: 8px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.7);
+        }
+      }
 
-  .hero-h1 {
-    font-size: clamp(64px, 11vw, 168px);
-    margin: 0 0 24px;
-    max-width: 14ch;
-  }
-  .hero-h1 .l { display: block; }
-  .hero-h1 .accent-word {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    text-transform: none;
-    letter-spacing: -.01em;
-    font-size: .92em;
-  }
-  .hero-sub {
-    font-size: clamp(15px, 1.3vw, 18px);
-    line-height: 1.55;
-    color: var(--cream-soft);
-    max-width: 48ch;
-    margin: 0 0 36px;
-    font-weight: 400;
-  }
-  .hero-ctas {
-    display: flex; gap: 14px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+      .hero-h1 {
+        font-size: clamp(64px, 11vw, 168px);
+        margin: 0 0 24px;
+        max-width: 14ch;
+      }
+      .hero-h1 .l {
+        display: block;
+      }
+      .hero-h1 .accent-word {
+        color: var(--accent);
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: -0.01em;
+        font-size: 0.92em;
+      }
+      .hero-sub {
+        font-size: clamp(15px, 1.3vw, 18px);
+        line-height: 1.55;
+        color: var(--cream-soft);
+        max-width: 48ch;
+        margin: 0 0 36px;
+        font-weight: 400;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
 
-  .hero-bottom-bar {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    z-index: 6;
-    padding: 16px var(--pad-x);
-    display: flex; justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--line);
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,.4));
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--cream-soft);
-  }
-  .hero-bottom-bar .scroll-cue {
-    display: inline-flex; align-items: center; gap: 10px;
-    color: var(--cream-soft);
-  }
-  .hero-bottom-bar .scroll-cue .line {
-    display: inline-block; width: 32px; height: 1px;
-    background: var(--cream-soft);
-    position: relative; overflow: hidden;
-  }
-  .hero-bottom-bar .scroll-cue .line::after {
-    content: ""; position: absolute;
-    width: 12px; height: 1px; background: var(--accent);
-    animation: scrollLine 2s ease-in-out infinite;
-  }
-  @keyframes scrollLine {
-    0% { left: -12px; }
-    100% { left: 32px; }
-  }
-  .hero-bottom-bar .links { display: flex; gap: 22px; }
+      .hero-bottom-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 6;
+        padding: 16px var(--pad-x);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--line);
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--cream-soft);
+      }
+      .hero-bottom-bar .scroll-cue {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--cream-soft);
+      }
+      .hero-bottom-bar .scroll-cue .line {
+        display: inline-block;
+        width: 32px;
+        height: 1px;
+        background: var(--cream-soft);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bottom-bar .scroll-cue .line::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 1px;
+        background: var(--accent);
+        animation: scrollLine 2s ease-in-out infinite;
+      }
+      @keyframes scrollLine {
+        0% {
+          left: -12px;
+        }
+        100% {
+          left: 32px;
+        }
+      }
+      .hero-bottom-bar .links {
+        display: flex;
+        gap: 22px;
+      }
 
-  /* ===== Generic sections ===== */
-  section { position: relative; }
-  .section {
-    padding: var(--section-y) 0;
-  }
-  .section.cream { background: var(--cream); color: var(--ink); }
-  .section.ink { background: var(--ink); color: var(--cream); }
-  .section.ink-2 { background: #35332e; color: var(--cream); }
+      /* ===== Generic sections ===== */
+      section {
+        position: relative;
+      }
+      .section {
+        padding: var(--section-y) 0;
+      }
+      #favourites, #reviews, #order, #contact {
+        content-visibility: auto;
+        contain-intrinsic-size: 0 800px;
+      }
+      .section.cream {
+        background: var(--cream);
+        color: var(--ink);
+      }
+      .section.ink {
+        background: var(--ink);
+        color: var(--cream);
+      }
+      .section.ink-2 {
+        background: #35332e;
+        color: var(--cream);
+      }
 
-  .container {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 var(--pad-x);
-  }
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--pad-x);
+      }
 
-  .section-head {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 48px;
-    align-items: end;
-    margin-bottom: 56px;
-  }
-  .section-head .title {
-    font-size: clamp(48px, 6vw, 96px);
-    margin: 14px 0 0;
-  }
-  .section-head .lede {
-    font-size: 17px;
-    line-height: 1.55;
-    max-width: 56ch;
-  }
-  .section.ink .section-head .lede { color: var(--cream-soft); }
-  .section.cream .section-head .lede { color: #4a4036; }
-  .section.ink-2 .section-head .lede { color: var(--cream-soft); }
+      .section-head {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 48px;
+        align-items: end;
+        margin-bottom: 56px;
+      }
+      .section-head .title {
+        font-size: clamp(48px, 6vw, 96px);
+        margin: 14px 0 0;
+      }
+      .section-head .lede {
+        font-size: 17px;
+        line-height: 1.55;
+        max-width: 56ch;
+      }
+      .section.ink .section-head .lede {
+        color: var(--cream-soft);
+      }
+      .section.cream .section-head .lede {
+        color: #4a4036;
+      }
+      .section.ink-2 .section-head .lede {
+        color: var(--cream-soft);
+      }
 
-  /* ===== ABOUT ===== */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .about-copy h3 {
-    font-family: var(--display);
-    font-size: clamp(32px, 3.5vw, 56px);
-    font-weight: 400;
-    letter-spacing: .005em;
-    text-transform: uppercase;
-    line-height: .95;
-    margin: 12px 0 24px;
-    max-width: 14ch;
-  }
-  .about-copy h3 em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--accent);
-    text-transform: none;
-    letter-spacing: -.01em;
-  }
-  .about-copy p {
-    margin: 0 0 18px;
-    color: #4a4036;
-    font-size: 16px;
-    max-width: 56ch;
-  }
-  .about-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    margin-top: 36px;
-    padding-top: 36px;
-    border-top: 1px solid rgba(13,12,10,.12);
-  }
-  .about-feature .ico {
-    width: 36px; height: 36px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    background: rgba(217,74,42,.1);
-    color: var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-  .about-feature h4 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: .02em;
-    margin: 0 0 4px;
-    text-transform: uppercase;
-  }
-  .about-feature p {
-    margin: 0;
-    font-size: 14px;
-    color: #6a6055;
-    line-height: 1.45;
-  }
+      /* ===== ABOUT ===== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .about-copy h3 {
+        font-family: var(--display);
+        font-size: clamp(32px, 3.5vw, 56px);
+        font-weight: 400;
+        letter-spacing: 0.005em;
+        text-transform: uppercase;
+        line-height: 0.95;
+        margin: 12px 0 24px;
+        max-width: 14ch;
+      }
+      .about-copy h3 em {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        color: var(--accent);
+        text-transform: none;
+        letter-spacing: -0.01em;
+      }
+      .about-copy p {
+        margin: 0 0 18px;
+        color: #4a4036;
+        font-size: 16px;
+        max-width: 56ch;
+      }
+      .about-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-top: 36px;
+        padding-top: 36px;
+        border-top: 1px solid rgba(13, 12, 10, 0.12);
+      }
+      .about-feature .ico {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(217, 74, 42, 0.1);
+        color: var(--accent);
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .about-feature h4 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 0.02em;
+        margin: 0 0 4px;
+        text-transform: uppercase;
+      }
+      .about-feature p {
+        margin: 0;
+        font-size: 14px;
+        color: #6a6055;
+        line-height: 1.45;
+      }
 
-  .about-visual {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-  }
-  .about-visual .ph {
-    width: 100%; height: 100%;
-    background:
-      linear-gradient(135deg, transparent calc(50% - .5px), rgba(13,12,10,.5) 50%, transparent calc(50% + .5px)),
-      linear-gradient(45deg, transparent calc(50% - .5px), rgba(13,12,10,.5) 50%, transparent calc(50% + .5px)),
-      repeating-linear-gradient(135deg, rgba(13,12,10,.1) 0 12px, rgba(13,12,10,.04) 12px 24px);
-    background-color: #2a2620;
-    position: relative;
-    color: var(--cream-soft);
-    display: flex; align-items: flex-end;
-    padding: 28px;
-  }
-  .about-visual .ph::after {
-    content: "INTERIOR · NEON BOOTH";
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .25em;
-    color: rgba(245,239,227,.6);
-    padding: 4px 10px;
-    border: 1px solid rgba(245,239,227,.3);
-    background: rgba(13,12,10,.6);
-  }
-  .about-visual .corner-tag {
-    position: absolute;
-    top: 24px; left: 24px;
-    z-index: 2;
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    padding: 6px 12px;
-  }
-  .about-visual .vert-meta {
-    position: absolute;
-    right: 24px; top: 24px;
-    z-index: 2;
-    font-family: var(--jp);
-    font-size: 12px;
-    color: var(--cream-soft);
-    writing-mode: vertical-rl;
-    letter-spacing: .2em;
-  }
-  .about-visual .stack {
-    position: absolute;
-    bottom: -28px; right: -28px;
-    width: 45%; aspect-ratio: 1;
-    background:
-      repeating-linear-gradient(135deg, rgba(217,74,42,.1) 0 10px, transparent 10px 20px),
-      #d94a2a;
-    z-index: -1;
-  }
+      .about-visual {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+      }
+      .about-visual .ph {
+        width: 100%;
+        height: 100%;
+        background:
+          linear-gradient(
+            135deg,
+            transparent calc(50% - 0.5px),
+            rgba(13, 12, 10, 0.5) 50%,
+            transparent calc(50% + 0.5px)
+          ),
+          linear-gradient(
+            45deg,
+            transparent calc(50% - 0.5px),
+            rgba(13, 12, 10, 0.5) 50%,
+            transparent calc(50% + 0.5px)
+          ),
+          repeating-linear-gradient(
+            135deg,
+            rgba(13, 12, 10, 0.1) 0 12px,
+            rgba(13, 12, 10, 0.04) 12px 24px
+          );
+        background-color: #2a2620;
+        position: relative;
+        color: var(--cream-soft);
+        display: flex;
+        align-items: flex-end;
+        padding: 28px;
+      }
+      .about-visual .ph::after {
+        content: "INTERIOR · NEON BOOTH";
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        color: rgba(245, 239, 227, 0.6);
+        padding: 4px 10px;
+        border: 1px solid rgba(245, 239, 227, 0.3);
+        background: rgba(13, 12, 10, 0.6);
+      }
+      .about-visual .corner-tag {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        z-index: 2;
+        background: var(--accent);
+        color: #fff;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+      }
+      .about-visual .vert-meta {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        z-index: 2;
+        font-family: var(--jp);
+        font-size: 12px;
+        color: var(--cream-soft);
+        writing-mode: vertical-rl;
+        letter-spacing: 0.2em;
+      }
+      .about-visual .stack {
+        position: absolute;
+        bottom: -28px;
+        right: -28px;
+        width: 45%;
+        aspect-ratio: 1;
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(217, 74, 42, 0.1) 0 10px,
+            transparent 10px 20px
+          ),
+          #d94a2a;
+        z-index: -1;
+      }
 
-  /* ===== Fan Favourites ===== */
-  .menu-bar {
-    display: flex; align-items: center;
-    gap: 20px; flex-wrap: wrap;
-    margin-bottom: 48px;
-  }
-  .menu-filters {
-    display: flex; gap: 8px;
-    flex-wrap: wrap;
-  }
-  .menu-filters button {
-    padding: 8px 16px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    color: var(--cream-soft);
-    transition: all .2s ease;
-  }
-  .menu-filters button:hover { color: var(--cream); border-color: var(--cream); }
-  .menu-filters button.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .menu-bar .menu-link {
-    margin-left: auto;
-    font-size: 13px;
-    letter-spacing: .04em;
-    color: var(--cream-soft);
-    border-bottom: 1px solid var(--cream-soft);
-    padding-bottom: 2px;
-    transition: color .2s, border-color .2s;
-  }
-  .menu-bar .menu-link:hover { color: var(--accent); border-color: var(--accent); }
+      /* ===== Fan Favourites ===== */
+      .menu-bar {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 48px;
+      }
+      .menu-filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .menu-filters button {
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        color: var(--cream-soft);
+        transition: all 0.2s ease;
+      }
+      .menu-filters button:hover {
+        color: var(--cream);
+        border-color: var(--cream);
+      }
+      .menu-filters button.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .menu-bar .menu-link {
+        margin-left: auto;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: var(--cream-soft);
+        border-bottom: 1px solid var(--cream-soft);
+        padding-bottom: 2px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .menu-bar .menu-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
 
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-  }
-  .dish {
-    position: relative;
-    background: var(--ink);
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-    cursor: pointer;
-    transition: background .3s ease;
-  }
-  .dish:hover { background: #1a1812; }
-  .dish .img {
-    position: relative;
-    aspect-ratio: 5 / 4;
-    overflow: hidden;
-    background: #2a2620;
-  }
-  .dish .img::before {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      repeating-linear-gradient(135deg, rgba(245,239,227,.08) 0 10px, transparent 10px 20px),
-      linear-gradient(135deg, #322b22 0%, #1a1712 100%);
-  }
-  .dish .img::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 12px; left: 12px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--cream-faint);
-    padding: 4px 8px;
-    border: 1px solid var(--line-strong);
-    background: rgba(13,12,10,.7);
-  }
-  .dish .tag {
-    position: absolute;
-    top: 16px; left: 16px;
-    z-index: 2;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    background: var(--accent);
-    color: #fff;
-  }
-  .dish .tag.alt { background: var(--cream); color: var(--ink); }
-  .dish .tag.dark { background: var(--ink); color: var(--cream); border: 1px solid var(--line-strong); }
-  .dish .body {
-    padding: 22px 24px 26px;
-    display: flex; flex-direction: column; gap: 8px;
-    transition: transform .35s cubic-bezier(.4,0,.2,1);
-  }
-  .dish:hover .body { transform: translateY(-3px); }
-  .dish .row {
-    display: flex; justify-content: space-between;
-    align-items: baseline; gap: 12px;
-  }
-  .dish .name {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 24px;
-    letter-spacing: .02em;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-  .dish .price {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .dish .desc {
-    font-size: 13.5px;
-    color: var(--cream-soft);
-    line-height: 1.45;
-    margin: 0;
-  }
-  .dish .meta {
-    display: flex; gap: 12px; flex-wrap: wrap;
-    margin-top: 6px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .15em;
-    color: var(--cream-faint);
-    text-transform: uppercase;
-  }
-  .dish .meta span::before {
-    content: "·"; margin-right: 12px; color: var(--cream-faint);
-  }
-  .dish .meta span:first-child::before { display: none; }
-  .dish .add {
-    position: absolute;
-    bottom: 22px; right: 22px;
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity .25s ease, transform .25s ease;
-  }
-  .dish:hover .add { opacity: 1; transform: translateY(0); }
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+      .dish {
+        position: relative;
+        background: var(--ink);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .dish:hover {
+        background: #1a1812;
+      }
+      .dish .img {
+        position: relative;
+        aspect-ratio: 5 / 4;
+        overflow: hidden;
+        background: #2a2620;
+      }
+      .dish .img::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(245, 239, 227, 0.08) 0 10px,
+            transparent 10px 20px
+          ),
+          linear-gradient(135deg, #322b22 0%, #1a1712 100%);
+      }
+      .dish .img::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+        padding: 4px 8px;
+        border: 1px solid var(--line-strong);
+        background: rgba(13, 12, 10, 0.7);
+      }
+      .dish .tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        z-index: 2;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        background: var(--accent);
+        color: #fff;
+      }
+      .dish .tag.alt {
+        background: var(--cream);
+        color: var(--ink);
+      }
+      .dish .tag.dark {
+        background: var(--ink);
+        color: var(--cream);
+        border: 1px solid var(--line-strong);
+      }
+      .dish .body {
+        padding: 22px 24px 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .dish:hover .body {
+        transform: translateY(-3px);
+      }
+      .dish .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .dish .name {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      .dish .price {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .dish .desc {
+        font-size: 13.5px;
+        color: var(--cream-soft);
+        line-height: 1.45;
+        margin: 0;
+      }
+      .dish .meta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.15em;
+        color: var(--cream-faint);
+        text-transform: uppercase;
+      }
+      .dish .meta span::before {
+        content: "·";
+        margin-right: 12px;
+        color: var(--cream-faint);
+      }
+      .dish .meta span:first-child::before {
+        display: none;
+      }
+      .dish .add {
+        position: absolute;
+        bottom: 22px;
+        right: 22px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+      }
+      .dish:hover .add {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  .menu-footer {
-    margin-top: 56px;
-    display: flex; justify-content: space-between;
-    align-items: center; gap: 24px;
-    padding-top: 36px;
-    border-top: 1px solid var(--line);
-  }
-  .menu-footer .note {
-    font-size: 14px;
-    color: var(--cream-soft);
-    max-width: 56ch;
-  }
-  .menu-footer .note b { color: var(--cream); font-weight: 500; }
+      .menu-footer {
+        margin-top: 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        padding-top: 36px;
+        border-top: 1px solid var(--line);
+      }
+      .menu-footer .note {
+        font-size: 14px;
+        color: var(--cream-soft);
+        max-width: 56ch;
+      }
+      .menu-footer .note b {
+        color: var(--cream);
+        font-weight: 500;
+      }
 
-  /* ===== Reviews ===== */
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    background: rgba(13,12,10,.06);
-  }
-  .review {
-    padding: 36px 32px;
-    background: var(--cream);
-    display: flex; flex-direction: column; gap: 18px;
-    min-height: 320px;
-    position: relative;
-    transition: background .3s;
-  }
-  .review:hover { background: var(--cream-2); }
-  .review .stars {
-    display: flex; gap: 3px;
-    color: var(--accent);
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-  .review .quote {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.35;
-    color: var(--ink);
-    flex: 1;
-  }
-  .review .quote::before {
-    content: "\201C";
-    font-size: 48px;
-    line-height: 0;
-    color: var(--accent);
-    vertical-align: -16px;
-    margin-right: 4px;
-  }
-  .review .author {
-    display: flex; align-items: center; gap: 14px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(13,12,10,.12);
-  }
-  .review .avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--cream);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: var(--display);
-    font-size: 15px;
-    letter-spacing: .04em;
-    flex-shrink: 0;
-  }
-  .review .who {
-    display: flex; flex-direction: column;
-    line-height: 1.2;
-  }
-  .review .who .n {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .review .who .src {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: #6a6055;
-  }
+      /* ===== Reviews ===== */
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        background: rgba(13, 12, 10, 0.06);
+      }
+      .review {
+        padding: 36px 32px;
+        background: var(--cream);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-height: 320px;
+        position: relative;
+        transition: background 0.3s;
+      }
+      .review:hover {
+        background: var(--cream-2);
+      }
+      .review .stars {
+        display: flex;
+        gap: 3px;
+        color: var(--accent);
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+      .review .quote {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.35;
+        color: var(--ink);
+        flex: 1;
+      }
+      .review .quote::before {
+        content: "\201C";
+        font-size: 48px;
+        line-height: 0;
+        color: var(--accent);
+        vertical-align: -16px;
+        margin-right: 4px;
+      }
+      .review .author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(13, 12, 10, 0.12);
+      }
+      .review .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--cream);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--display);
+        font-size: 15px;
+        letter-spacing: 0.04em;
+        flex-shrink: 0;
+      }
+      .review .who {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+      .review .who .n {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--ink);
+      }
+      .review .who .src {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #6a6055;
+      }
 
-  .reviews-stats {
-    margin-top: 56px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    padding-top: 36px;
-    border-top: 1px solid rgba(13,12,10,.12);
-  }
-  .reviews-stats .stat .n {
-    font-family: var(--display);
-    font-size: clamp(40px, 4.5vw, 64px);
-    color: var(--ink);
-    line-height: 1;
-  }
-  .reviews-stats .stat .n em {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 500;
-    font-size: .65em;
-    vertical-align: super;
-  }
-  .reviews-stats .stat .l {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: #6a6055;
-    margin-top: 8px;
-  }
+      .reviews-stats {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        padding-top: 36px;
+        border-top: 1px solid rgba(13, 12, 10, 0.12);
+      }
+      .reviews-stats .stat .n {
+        font-family: var(--display);
+        font-size: clamp(40px, 4.5vw, 64px);
+        color: var(--ink);
+        line-height: 1;
+      }
+      .reviews-stats .stat .n em {
+        font-family: var(--serif);
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 500;
+        font-size: 0.65em;
+        vertical-align: super;
+      }
+      .reviews-stats .stat .l {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #6a6055;
+        margin-top: 8px;
+      }
 
-  /* ===== Pickup / Delivery ===== */
-  .order-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  .order-card {
-    position: relative;
-    padding: 44px 36px;
-    min-height: 360px;
-    display: flex; flex-direction: column;
-    gap: 16px;
-    border: 1px solid var(--line);
-    overflow: hidden;
-    transition: transform .3s, border-color .3s;
-  }
-  .order-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--line-strong);
-  }
-  .order-card .num {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    color: var(--accent);
-  }
-  .order-card h3 {
-    font-family: var(--display);
-    font-size: 56px;
-    font-weight: 400;
-    letter-spacing: .01em;
-    line-height: .92;
-    text-transform: uppercase;
-    margin: 8px 0 6px;
-  }
-  .order-card .lede {
-    font-size: 15px;
-    color: var(--cream-soft);
-    line-height: 1.5;
-    max-width: 32ch;
-    flex: 1;
-  }
-  .order-card .meta {
-    display: flex; flex-direction: column;
-    gap: 10px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-    margin-top: 18px;
-  }
-  .order-card .meta .r {
-    display: flex; justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--cream-faint);
-  }
-  .order-card .meta .r b { color: var(--cream); font-weight: 500; }
-  .order-card .btn { align-self: flex-start; margin-top: 20px; }
+      /* ===== Pickup / Delivery ===== */
+      .order-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .order-card {
+        position: relative;
+        padding: 44px 36px;
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border: 1px solid var(--line);
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+      }
+      .order-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--line-strong);
+      }
+      .order-card .num {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        color: var(--accent);
+      }
+      .order-card h3 {
+        font-family: var(--display);
+        font-size: 56px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 0.92;
+        text-transform: uppercase;
+        margin: 8px 0 6px;
+      }
+      .order-card .lede {
+        font-size: 15px;
+        color: var(--cream-soft);
+        line-height: 1.5;
+        max-width: 32ch;
+        flex: 1;
+      }
+      .order-card .meta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        margin-top: 18px;
+      }
+      .order-card .meta .r {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+      }
+      .order-card .meta .r b {
+        color: var(--cream);
+        font-weight: 500;
+      }
+      .order-card .btn {
+        align-self: flex-start;
+        margin-top: 20px;
+      }
 
-  .order-card.feature {
-    background:
-      radial-gradient(80% 60% at 100% 0%, rgba(217,74,42,.25), transparent 70%),
-      #35332e;
-    border-color: rgba(217,74,42,.4);
-  }
-  .order-card.feature .num { color: var(--cream); }
+      .order-card.feature {
+        background:
+          radial-gradient(
+            80% 60% at 100% 0%,
+            rgba(217, 74, 42, 0.25),
+            transparent 70%
+          ),
+          #35332e;
+        border-color: rgba(217, 74, 42, 0.4);
+      }
+      .order-card.feature .num {
+        color: var(--cream);
+      }
 
-  .order-glyph {
-    position: absolute;
-    top: 36px; right: 36px;
-    width: 56px; height: 56px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border: 1px solid var(--line-strong);
-    border-radius: 50%;
-    color: var(--cream-soft);
-    font-family: var(--jp);
-    font-weight: 300;
-    font-size: 20px;
-  }
-  .order-card.feature .order-glyph {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+      .order-glyph {
+        position: absolute;
+        top: 36px;
+        right: 36px;
+        width: 56px;
+        height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        color: var(--cream-soft);
+        font-family: var(--jp);
+        font-weight: 300;
+        font-size: 20px;
+      }
+      .order-card.feature .order-glyph {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
 
-  /* ===== Contact ===== */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 64px;
-  }
-  .contact-info { display: flex; flex-direction: column; gap: 28px; }
-  .contact-info dl {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 18px 24px;
-    align-items: baseline;
-  }
-  .contact-info dt {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: #6a6055;
-  }
-  .contact-info dd {
-    margin: 0;
-    font-size: 16px;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .contact-info dd b { font-weight: 600; }
-  .contact-info dd a:hover { color: var(--accent); }
+      /* ===== Contact ===== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 64px;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+      .contact-info dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 18px 24px;
+        align-items: baseline;
+      }
+      .contact-info dt {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #6a6055;
+      }
+      .contact-info dd {
+        margin: 0;
+        font-size: 16px;
+        color: var(--ink);
+        line-height: 1.4;
+      }
+      .contact-info dd b {
+        font-weight: 600;
+      }
+      .contact-info dd a:hover {
+        color: var(--accent);
+      }
 
-  .map-card {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    background:
-      repeating-linear-gradient(0deg, rgba(13,12,10,.06) 0 1px, transparent 1px 60px),
-      repeating-linear-gradient(90deg, rgba(13,12,10,.06) 0 1px, transparent 1px 60px),
-      var(--cream-2);
-    border: 1px solid rgba(13,12,10,.12);
-    overflow: hidden;
-  }
-  .map-card .pin {
-    position: absolute;
-    top: 48%; left: 52%;
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 32px; height: 32px;
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    border-radius: 50% 50% 50% 0;
-    transform: translate(-50%, -100%) rotate(-45deg);
-    transform-origin: bottom left;
-    box-shadow: 0 8px 24px -6px var(--accent-glow);
-  }
-  .map-card .pin span { transform: rotate(45deg); display: block; }
-  .map-card .corner {
-    position: absolute;
-    bottom: 16px; right: 16px;
-    background: var(--ink);
-    color: var(--cream);
-    padding: 8px 14px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-  }
+      .map-card {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(13, 12, 10, 0.06) 0 1px,
+            transparent 1px 60px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(13, 12, 10, 0.06) 0 1px,
+            transparent 1px 60px
+          ),
+          var(--cream-2);
+        border: 1px solid rgba(13, 12, 10, 0.12);
+        overflow: hidden;
+      }
+      .map-card .pin {
+        position: absolute;
+        top: 48%;
+        left: 52%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        color: #fff;
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        border-radius: 50% 50% 50% 0;
+        transform: translate(-50%, -100%) rotate(-45deg);
+        transform-origin: bottom left;
+        box-shadow: 0 8px 24px -6px var(--accent-glow);
+      }
+      .map-card .pin span {
+        transform: rotate(45deg);
+        display: block;
+      }
+      .map-card .corner {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 8px 14px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
 
-  .contact-form { display: flex; flex-direction: column; gap: 18px; }
-  .contact-form .field { display: flex; flex-direction: column; gap: 6px; }
-  .contact-form label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: #6a6055;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    font: inherit;
-    font-size: 15px;
-    padding: 14px 16px;
-    background: var(--cream);
-    border: 1px solid rgba(13,12,10,.18);
-    color: var(--ink);
-    border-radius: 0;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--accent); }
-  .contact-form textarea { resize: vertical; min-height: 130px; }
-  .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .contact-form .submit-row {
-    display: flex; justify-content: space-between;
-    align-items: center;
-    margin-top: 6px;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .contact-form .submit-row .note {
-    font-size: 12px;
-    color: #6a6055;
-  }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .contact-form .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .contact-form label {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #6a6055;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font: inherit;
+        font-size: 15px;
+        padding: 14px 16px;
+        background: var(--cream);
+        border: 1px solid rgba(13, 12, 10, 0.18);
+        color: var(--ink);
+        border-radius: 0;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent);
+      }
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 130px;
+      }
+      .contact-form .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .contact-form .submit-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .contact-form .submit-row .note {
+        font-size: 12px;
+        color: #6a6055;
+      }
 
-  /* ===== Footer ===== */
-  .footer {
-    background: #07060a;
-    color: var(--cream-soft);
-    padding: 96px 0 36px;
-    border-top: 1px solid var(--line);
-    position: relative;
-    overflow: hidden;
-  }
-  .footer .wordmark {
-    font-family: var(--display);
-    font-size: clamp(120px, 18vw, 280px);
-    color: var(--cream);
-    letter-spacing: -.01em;
-    line-height: .82;
-    margin: 0 0 64px;
-    text-transform: uppercase;
-    position: relative;
-  }
-  .footer .wordmark .mark {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: .42em;
-    vertical-align: 0.35em;
-    font-weight: 500;
-    margin: 0 .04em;
-    line-height: 0;
-  }
-  .footer .wordmark::after {
-    content: "EST. 2024 · EAST VILLAGE · NYC";
-    position: absolute;
-    top: 0; right: 0;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .25em;
-    color: var(--cream-faint);
-    text-transform: uppercase;
-  }
+      /* ===== Footer ===== */
+      .footer {
+        background: #07060a;
+        color: var(--cream-soft);
+        padding: 96px 0 36px;
+        border-top: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+      }
+      .footer .wordmark {
+        font-family: var(--display);
+        font-size: clamp(120px, 18vw, 280px);
+        color: var(--cream);
+        letter-spacing: -0.01em;
+        line-height: 0.82;
+        margin: 0 0 64px;
+        text-transform: uppercase;
+        position: relative;
+      }
+      .footer .wordmark .mark {
+        color: var(--accent);
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 0.42em;
+        vertical-align: 0.35em;
+        font-weight: 500;
+        margin: 0 0.04em;
+        line-height: 0;
+      }
+      .footer .wordmark::after {
+        content: "EST. 2024 · EAST VILLAGE · NYC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        color: var(--cream-faint);
+        text-transform: uppercase;
+      }
 
-  .footer-cols {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
-    gap: 32px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid var(--line);
-  }
-  .footer-cols .blurb p {
-    margin: 0 0 18px;
-    color: var(--cream-soft);
-    font-size: 15px;
-    max-width: 36ch;
-  }
-  .footer-cols .blurb .newsletter {
-    display: flex;
-    border: 1px solid var(--line-strong);
-    max-width: 380px;
-  }
-  .footer-cols .blurb .newsletter input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    padding: 12px 14px;
-    color: var(--cream);
-    font: inherit; font-size: 13px;
-    outline: none;
-  }
-  .footer-cols .blurb .newsletter input::placeholder { color: var(--cream-faint); }
-  .footer-cols .blurb .newsletter button {
-    padding: 0 18px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .footer-cols h4 {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 18px;
-    font-weight: 500;
-  }
-  .footer-cols ul {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .footer-cols ul a {
-    font-size: 14px;
-    color: var(--cream-soft);
-    transition: color .2s;
-  }
-  .footer-cols ul a:hover { color: var(--cream); }
+      .footer-cols {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+        gap: 32px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid var(--line);
+      }
+      .footer-cols .blurb p {
+        margin: 0 0 18px;
+        color: var(--cream-soft);
+        font-size: 15px;
+        max-width: 36ch;
+      }
+      .footer-cols .blurb .newsletter {
+        display: flex;
+        border: 1px solid var(--line-strong);
+        max-width: 380px;
+      }
+      .footer-cols .blurb .newsletter input {
+        flex: 1;
+        background: transparent;
+        border: 0;
+        padding: 12px 14px;
+        color: var(--cream);
+        font: inherit;
+        font-size: 13px;
+        outline: none;
+      }
+      .footer-cols .blurb .newsletter input::placeholder {
+        color: var(--cream-faint);
+      }
+      .footer-cols .blurb .newsletter button {
+        padding: 0 18px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .footer-cols h4 {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 18px;
+        font-weight: 500;
+      }
+      .footer-cols ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-cols ul a {
+        font-size: 14px;
+        color: var(--cream-soft);
+        transition: color 0.2s;
+      }
+      .footer-cols ul a:hover {
+        color: var(--cream);
+      }
 
-  .footer-bot {
-    padding-top: 28px;
-    display: flex; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--cream-faint);
-  }
-  .footer-bot .socials { display: flex; gap: 18px; }
-  .footer-bot .socials a:hover { color: var(--accent); }
+      .footer-bot {
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cream-faint);
+      }
+      .footer-bot .socials {
+        display: flex;
+        gap: 18px;
+      }
+      .footer-bot .socials a:hover {
+        color: var(--accent);
+      }
 
-  /* ===== Reveal animations ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
-  }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-  .reveal.d1 { transition-delay: .08s; }
-  .reveal.d2 { transition-delay: .16s; }
-  .reveal.d3 { transition-delay: .24s; }
-  .reveal.d4 { transition-delay: .32s; }
-  .reveal.d5 { transition-delay: .4s; }
-  .reveal.d6 { transition-delay: .48s; }
+      /* ===== Reveal animations ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+          transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal.d1 {
+        transition-delay: 0.08s;
+      }
+      .reveal.d2 {
+        transition-delay: 0.16s;
+      }
+      .reveal.d3 {
+        transition-delay: 0.24s;
+      }
+      .reveal.d4 {
+        transition-delay: 0.32s;
+      }
+      .reveal.d5 {
+        transition-delay: 0.4s;
+      }
+      .reveal.d6 {
+        transition-delay: 0.48s;
+      }
 
-  /* ===== Section diagonal transitions ===== */
-  /* Hero (dark) → About (cream) */
-  #about {
-    padding-top: calc(var(--section-y) + 64px);
-    padding-bottom: calc(var(--section-y) + 64px);
-  }
-  #about::before {
-    content: "";
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 64px;
-    background: var(--ink);
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    pointer-events: none;
-  }
-  /* About (cream) → Fan Favourites (dark) */
-  #about::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 64px;
-    background: var(--ink);
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    pointer-events: none;
-  }
-  /* Fan Favourites (dark) → Reviews (cream) */
-  #favourites {
-    padding-bottom: calc(var(--section-y) + 64px);
-  }
-  #favourites::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 64px;
-    background: var(--cream);
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
-    pointer-events: none;
-  }
-  /* Reviews (cream) → Order (dark) */
-  #reviews {
-    padding-bottom: calc(var(--section-y) + 64px);
-  }
-  #reviews::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 64px;
-    background: #35332e;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    pointer-events: none;
-  }
-  /* Order (dark) → Contact (cream) */
-  #order {
-    padding-bottom: calc(var(--section-y) + 64px);
-  }
-  #order::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 64px;
-    background: var(--cream);
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
-    pointer-events: none;
-  }
-  /* Contact (cream) → Footer (very dark) */
-  #contact {
-    padding-bottom: calc(var(--section-y) + 64px);
-  }
-  #contact::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 64px;
-    background: #07060a;
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    pointer-events: none;
-  }
+      /* ===== Section diagonal transitions ===== */
+      /* Hero (dark) → About (cream) */
+      #about {
+        padding-top: calc(var(--section-y) + 64px);
+        padding-bottom: calc(var(--section-y) + 64px);
+      }
+      #about::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: var(--ink);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        pointer-events: none;
+      }
+      /* About (cream) → Fan Favourites (dark) */
+      #about::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: var(--ink);
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        pointer-events: none;
+      }
+      /* Fan Favourites (dark) → Reviews (cream) */
+      #favourites {
+        padding-bottom: calc(var(--section-y) + 64px);
+      }
+      #favourites::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: var(--cream);
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+        pointer-events: none;
+      }
+      /* Reviews (cream) → Order (dark) */
+      #reviews {
+        padding-bottom: calc(var(--section-y) + 64px);
+      }
+      #reviews::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: #35332e;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        pointer-events: none;
+      }
+      /* Order (dark) → Contact (cream) */
+      #order {
+        padding-bottom: calc(var(--section-y) + 64px);
+      }
+      #order::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: var(--cream);
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+        pointer-events: none;
+      }
+      /* Contact (cream) → Footer (very dark) */
+      #contact {
+        padding-bottom: calc(var(--section-y) + 64px);
+      }
+      #contact::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: #07060a;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        pointer-events: none;
+      }
 
-  /* ===== Fan Favourites frame ===== */
-  .ff-frame {
-    border: 1px solid rgba(245, 239, 227, 0.12);
-    border-radius: 20px;
-    padding: clamp(28px, 3.5vw, 56px);
-    background: linear-gradient(160deg, rgba(245, 239, 227, 0.03) 0%, transparent 60%);
-    box-shadow:
-      0 0 0 1px rgba(217, 74, 42, 0.1),
-      0 48px 96px -32px rgba(0, 0, 0, 0.65),
-      inset 0 1px 0 rgba(245, 239, 227, 0.06);
-    position: relative;
-  }
-  .ff-frame::before {
-    content: "";
-    position: absolute;
-    top: -1px; left: 15%; right: 15%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(217, 74, 42, 0.55), transparent);
-    pointer-events: none;
-  }
+      /* ===== Fan Favourites frame ===== */
+      .ff-frame {
+        border: 1px solid rgba(245, 239, 227, 0.12);
+        border-radius: 20px;
+        padding: clamp(28px, 3.5vw, 56px);
+        background: linear-gradient(
+          160deg,
+          rgba(245, 239, 227, 0.03) 0%,
+          transparent 60%
+        );
+        box-shadow:
+          0 0 0 1px rgba(217, 74, 42, 0.1),
+          0 48px 96px -32px rgba(0, 0, 0, 0.65),
+          inset 0 1px 0 rgba(245, 239, 227, 0.06);
+        position: relative;
+      }
+      .ff-frame::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 15%;
+        right: 15%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(217, 74, 42, 0.55),
+          transparent
+        );
+        pointer-events: none;
+      }
 
-  /* ===== Responsive ===== */
-  @media (max-width: 980px) {
-    .nav-links, .nav-cta .reservation { display: none; }
-    .hamburger { display: inline-flex; }
-    .menu-grid, .reviews-grid, .order-grid { grid-template-columns: 1fr 1fr; }
-    .section-head { grid-template-columns: 1fr; gap: 16px; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-    .footer-cols { grid-template-columns: 1fr 1fr; }
-    .footer .wordmark::after { display: none; }
-    .reviews-stats { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px) {
-    .menu-grid, .reviews-grid, .order-grid { grid-template-columns: 1fr; }
-    .hero-meta-top { font-size: 10px; }
-    .hero-h1 { max-width: 100%; }
-    .about-features { grid-template-columns: 1fr; }
-    .reviews-stats { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .footer-cols { grid-template-columns: 1fr; }
-    .contact-form .row { grid-template-columns: 1fr; }
-    .hero-bottom-bar .links { display: none; }
-    .menu-footer { flex-direction: column; align-items: flex-start; }
+      /* ===== Intro animation ===== */
+      #intro {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        contain: layout style paint;
+        isolation: isolate;
+      }
+      .intro-half {
+        position: fixed;
+        inset: -4px;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 50%,
+          #0d0d0d 12%,
+          #000000 58%,
+          #3b3b3b 100%
+        );
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        transform-origin: 50% 50%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      .intro-half.top {
+        clip-path: polygon(-1% -1%, 101% -1%, -1% 101%);
+        transition: transform 1.4s cubic-bezier(0.65, 0, 0.15, 1);
+      }
+      .intro-half.bot {
+        clip-path: polygon(101% -1%, 101% 101%, -1% 101%);
+        transition: transform 1.4s cubic-bezier(0.65, 0, 0.15, 1);
+      }
+      .intro-half.top.exit {
+        transform: translate3d(-120vw, -120vh, 0) rotate(-4deg);
+      }
+      .intro-half.bot.exit {
+        transform: translate3d(120vw, 120vh, 0) rotate(4deg);
+      }
+      #intro-vid {
+        position: relative;
+        z-index: 2;
+        height: clamp(120px, 20vh, 260px);
+        width: auto;
+        object-fit: contain;
+        will-change: opacity;
+        transform: translate3d(0, 0, 0);
+        opacity: 0;
+        animation: introFadeIn 0.6s ease 0.2s forwards;
+      }
+      @keyframes introFadeIn {
+        to { opacity: 1; }
+      }
+      .intro-slash {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: linear-gradient(
+          135deg,
+          transparent 48%,
+          rgba(255, 255, 255, 0.95) 49.2%,
+          rgba(255, 255, 255, 0.95) 50.8%,
+          transparent 52%
+        );
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.06s ease;
+      }
+      #intro-skip {
+        position: absolute;
+        bottom: 32px;
+        right: 32px;
+        z-index: 4;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(245, 239, 227, 0.35);
+        border: 1px solid rgba(245, 239, 227, 0.18);
+        padding: 8px 18px;
+        background: transparent;
+        cursor: pointer;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+        border-radius: 2px;
+      }
+      #intro-skip:hover {
+        color: rgba(245, 239, 227, 0.75);
+        border-color: rgba(245, 239, 227, 0.4);
+      }
+      #intro-progress-wrap {
+        position: absolute;
+        bottom: 240px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(180px, 36vw, 380px);
+        z-index: 4;
+        transition: opacity 0.08s ease;
+      }
+      #intro-progress-track {
+        height: 3px;
+        background: rgba(245, 239, 227, 0.1);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      #intro-progress-fill {
+        height: 100%;
+        width: 100%;
+        background: #f07820;
+        border-radius: 999px;
+        transform: scaleX(0);
+        transform-origin: left center;
+        will-change: transform;
+      }
 
-    #about::before, #about::after,
-    #favourites::after, #reviews::after,
-    #order::after, #contact::after {
-      height: 40px;
-    }
-    #about {
-      padding-top: calc(var(--section-y) + 40px);
-      padding-bottom: calc(var(--section-y) + 40px);
-    }
-    #favourites, #reviews, #order, #contact {
-      padding-bottom: calc(var(--section-y) + 40px);
-    }
-  }
-</style>
-</head>
-<body>
+      /* ===== Responsive ===== */
+      @media (max-width: 980px) {
+        .nav-links,
+        .nav-cta .reservation {
+          display: none;
+        }
+        .hamburger {
+          display: inline-flex;
+        }
+        .menu-grid,
+        .reviews-grid,
+        .order-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .section-head {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .footer-cols {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer .wordmark::after {
+          display: none;
+        }
+        .reviews-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .menu-grid,
+        .reviews-grid,
+        .order-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-meta-top {
+          font-size: 10px;
+        }
+        .hero-h1 {
+          max-width: 100%;
+        }
+        .about-features {
+          grid-template-columns: 1fr;
+        }
+        .reviews-stats {
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+        .footer-cols {
+          grid-template-columns: 1fr;
+        }
+        .contact-form .row {
+          grid-template-columns: 1fr;
+        }
+        .hero-bottom-bar .links {
+          display: none;
+        }
+        .menu-footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="logo">
-      <span class="mark">★</span>
-      Foodinator
-      <span class="ja">フーディネーター</span>
-    </a>
-    <div class="nav-links">
+        #about::before,
+        #about::after,
+        #favourites::after,
+        #reviews::after,
+        #order::after,
+        #contact::after {
+          height: 40px;
+        }
+        #about {
+          padding-top: calc(var(--section-y) + 40px);
+          padding-bottom: calc(var(--section-y) + 40px);
+        }
+        #favourites,
+        #reviews,
+        #order,
+        #contact {
+          padding-bottom: calc(var(--section-y) + 40px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== INTRO ===== -->
+    <div id="intro">
+      <div class="intro-half top"></div>
+      <div class="intro-half bot"></div>
+      <video id="intro-vid" autoplay muted playsinline preload="auto">
+        <source src="chibininja.mp4" type="video/mp4" />
+      </video>
+      <div class="intro-slash" id="intro-slash"></div>
+      <div id="intro-progress-wrap">
+        <div id="intro-progress-track">
+          <div id="intro-progress-fill"></div>
+        </div>
+      </div>
+      <button id="intro-skip">Skip</button>
+    </div>
+
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#top" class="logo">
+          <span class="mark">★</span>
+          Foodinator
+          <span class="ja">フーディネーター</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#favourites">Fan Favourites</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#order">Pickup / Delivery</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact">Location</a>
+        </div>
+        <div class="nav-cta">
+          <div class="reservation"><b>Open until 1am</b> · Tue – Sun</div>
+          <a href="#favourites" class="btn"
+            >Full Menu
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
       <a href="#about">About</a>
       <a href="#favourites">Fan Favourites</a>
       <a href="#reviews">Reviews</a>
       <a href="#order">Pickup / Delivery</a>
       <a href="#contact">Contact</a>
       <a href="#contact">Location</a>
-    </div>
-    <div class="nav-cta">
-      <div class="reservation"><b>Open until 1am</b> · Tue – Sun</div>
-      <a href="#favourites" class="btn">Full Menu
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <a href="#favourites" class="btn"
+        >View Full Menu
+        <svg
+          class="arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </div>
-</nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">About</a>
-  <a href="#favourites">Fan Favourites</a>
-  <a href="#reviews">Reviews</a>
-  <a href="#order">Pickup / Delivery</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact">Location</a>
-  <a href="#favourites" class="btn">View Full Menu
-    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </a>
-</div>
-
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="hero-bg">
-    <div class="scene"></div>
-    <div class="lantern l1"></div>
-    <div class="lantern l2"></div>
-    <div class="lantern l3"></div>
-    <div class="lantern l4"></div>
-    <div class="scanlines"></div>
-    <div class="hero-grain"></div>
-  </div>
-
-  <div class="hero-kanji-watermark">夢</div>
-
-  <div class="hero-katakana">ASIAN · FUSION · KITCHEN</div>
-
-  <div class="hero-meta-top">
-    <span><span class="dot"></span>Now serving · Spring menu '26</span>
-    <span>Vol. 01 / 04</span>
-  </div>
-
-  <div class="hero-content">
-    <span class="eyebrow reveal">— A neighbourhood kitchen</span>
-    <h1 class="hero-h1 display reveal d1">
-      <span class="l">Asian Fusion.</span>
-      <span class="l"><span class="accent-word">Anime-inspired</span></span>
-      <span class="l">Atmosphere.</span>
-    </h1>
-    <p class="hero-sub reveal d2">
-      A late-night kitchen in the East Village serving Tokyo-via-Seoul ramen, fried chicken bowls,
-      and dumplings — inside a neon-soft dining room that feels lifted from your favourite film.
-    </p>
-    <div class="hero-ctas reveal d3">
-      <a href="#favourites" class="btn xl">View Full Menu
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="#order" class="btn ghost lg">Order Pickup</a>
-      <a href="#contact" class="btn ghost lg">Find Us</a>
-    </div>
-  </div>
-
-  <div class="hero-bottom-bar">
-    <span class="scroll-cue"><span class="line"></span>Scroll</span>
-    <div class="links">
-      <span>221 Lantern St · East Village</span>
-      <span style="color:var(--accent)">★ 4.9 · 1,247 reviews</span>
-      <span>(415) 555-0142</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section class="section cream" id="about">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">01 — About</span>
-        <h2 class="display title reveal d1">About <em class="italic-mark">Foodinator</em></h2>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-bg">
+        <div class="scene"></div>
+        <div class="lantern l1"></div>
+        <div class="lantern l2"></div>
+        <div class="lantern l3"></div>
+        <div class="lantern l4"></div>
+        <div class="scanlines"></div>
+        <div class="hero-grain"></div>
       </div>
-      <p class="lede reveal d2">
-        A two-chef kitchen, a 36-seat dining room, and a soundtrack that runs from city pop
-        to late-90s anime ED themes. Foodinator opened in 2024 with one idea: serve the food
-        we always wanted to eat after a long shift, in a room we always wanted to sit in.
-      </p>
-    </div>
 
-    <div class="about-grid">
-      <div class="about-copy reveal">
-        <h3>Fusion that <em>actually</em> fuses.</h3>
-        <p>
-          Chef Mei trained in Osaka. Chef Kenji grew up in his family's Seoul fried-chicken joint.
-          The menu sits at the intersection — handmade ramen finished with gochujang butter,
-          karaage tossed in a yuzu glaze, dumplings filled with miso-braised short rib.
+      <div class="hero-kanji-watermark">夢</div>
+
+      <div class="hero-katakana">ASIAN · FUSION · KITCHEN</div>
+
+      <div class="hero-meta-top">
+        <span><span class="dot"></span>Now serving · Spring menu '26</span>
+        <span>Vol. 01 / 04</span>
+      </div>
+
+      <div class="hero-content">
+        <span class="eyebrow reveal">— A neighbourhood kitchen</span>
+        <h1 class="hero-h1 display reveal d1">
+          <span class="l">Asian Fusion.</span>
+          <span class="l"><span class="accent-word">Anime-inspired</span></span>
+          <span class="l">Atmosphere.</span>
+        </h1>
+        <p class="hero-sub reveal d2">
+          A late-night kitchen in the East Village serving Tokyo-via-Seoul
+          ramen, fried chicken bowls, and dumplings — inside a neon-soft dining
+          room that feels lifted from your favourite film.
         </p>
-        <p>
-          The dining room nods to the kitchens we cooked our way through as kids — paper lanterns,
-          a hand-painted mural of the alleyway in <em>Spirited Away</em>, leather booths the colour of
-          tonkatsu sauce. It's a restaurant first, a love letter second.
-        </p>
-
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="ico"><span>i</span></div>
-            <h4>Hand-made daily</h4>
-            <p>Noodles, dumpling wrappers, and broths from scratch every morning.</p>
-          </div>
-          <div class="about-feature">
-            <div class="ico"><span>i</span></div>
-            <h4>Open late</h4>
-            <p>Kitchen runs Tue – Sun until 1am. Late-night menu after 11pm.</p>
-          </div>
-          <div class="about-feature">
-            <div class="ico"><span>i</span></div>
-            <h4>36 seats</h4>
-            <p>Small dining room. Reservations recommended Thursday – Saturday.</p>
-          </div>
-          <div class="about-feature">
-            <div class="ico"><span>i</span></div>
-            <h4>Local sourcing</h4>
-            <p>Produce from the Union Square greenmarket; fish from the Bronx.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-visual reveal d2">
-        <div class="stack"></div>
-        <div class="corner-tag">The Dining Room</div>
-        <div class="vert-meta">店内</div>
-        <div class="ph"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAN FAVOURITES ============ -->
-<section class="section ink" id="favourites">
-  <div class="container">
-    <div class="ff-frame">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">02 — The Menu</span>
-        <h2 class="display title reveal d1">Fan <em class="italic-mark">Favourites</em></h2>
-      </div>
-      <p class="lede reveal d2">
-        The dishes our regulars order on repeat. Updated every season — the full list is on the menu page.
-      </p>
-    </div>
-
-    <div class="menu-bar reveal">
-      <div class="menu-filters">
-        <button class="active" data-filter="all">All</button>
-        <button data-filter="ramen">Ramen &amp; Noodles</button>
-        <button data-filter="rice">Rice Bowls</button>
-        <button data-filter="small">Small Plates</button>
-        <button data-filter="sweets">Sweets</button>
-      </div>
-      <a href="#favourites" class="menu-link">View the full menu →</a>
-    </div>
-
-    <div class="menu-grid">
-      <article class="dish reveal">
-        <div class="img" data-label="Ramen · #001"></div>
-        <span class="tag">Best Seller</span>
-        <div class="body">
-          <div class="row"><div class="name">Tokyo Fire Ramen</div><div class="price">$18</div></div>
-          <p class="desc">Volcano tonkotsu, chashu pork belly, 6-min egg, house chili crisp, scallion oil.</p>
-          <div class="meta"><span>Lv. 3 spice</span><span>Contains pork</span></div>
-        </div>
-        <button class="add" aria-label="Add to order">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-      </article>
-
-      <article class="dish reveal d1">
-        <div class="img" data-label="Bowl · #002"></div>
-        <span class="tag alt">Chef's Pick</span>
-        <div class="body">
-          <div class="row"><div class="name">Seoul Crunch Bowl</div><div class="price">$16</div></div>
-          <p class="desc">Korean fried chicken, gochujang glaze, kimchi slaw, sesame, jasmine rice.</p>
-          <div class="meta"><span>Lv. 2 spice</span><span>Gluten-free option</span></div>
-        </div>
-        <button class="add" aria-label="Add to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-      </article>
-
-      <article class="dish reveal d2">
-        <div class="img" data-label="Small Plates · #003"></div>
-        <span class="tag dark">New</span>
-        <div class="body">
-          <div class="row"><div class="name">Dragon Roll Tacos</div><div class="price">$15</div></div>
-          <p class="desc">Spicy tuna, avocado, cucumber, micro shiso — folded into crispy nori shells, three to a plate.</p>
-          <div class="meta"><span>Lv. 1 spice</span><span>Contains raw fish</span></div>
-        </div>
-        <button class="add" aria-label="Add to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-      </article>
-
-      <article class="dish reveal d3">
-        <div class="img" data-label="Noodles · #004"></div>
-        <span class="tag alt">Chef's Pick</span>
-        <div class="body">
-          <div class="row"><div class="name">Miso Carbonara Udon</div><div class="price">$17</div></div>
-          <p class="desc">Hand-pulled udon, miso-cream sauce, guanciale, soft egg yolk, cracked black pepper.</p>
-          <div class="meta"><span>Contains pork</span><span>Contains dairy</span></div>
-        </div>
-        <button class="add" aria-label="Add to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-      </article>
-
-      <article class="dish reveal d4">
-        <div class="img" data-label="Small Plates · #005"></div>
-        <span class="tag dark">New</span>
-        <div class="body">
-          <div class="row"><div class="name">Bao Buns Supreme</div><div class="price">$14</div></div>
-          <p class="desc">A trio of steamed buns — pork belly, crispy tofu, chili shrimp. Pickles, cilantro.</p>
-          <div class="meta"><span>Set of 3</span><span>Veg option available</span></div>
-        </div>
-        <button class="add" aria-label="Add to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-      </article>
-
-      <article class="dish reveal d5">
-        <div class="img" data-label="Sweets · #006"></div>
-        <span class="tag">Best Seller</span>
-        <div class="body">
-          <div class="row"><div class="name">Matcha Lava Cake</div><div class="price">$10</div></div>
-          <p class="desc">Molten matcha centre, dark chocolate shell, black-sesame ice cream, caramelised rice tuile.</p>
-          <div class="meta"><span>Contains dairy</span><span>Contains nuts</span></div>
-        </div>
-        <button class="add" aria-label="Add to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-      </article>
-    </div>
-
-    <div class="menu-footer reveal">
-      <p class="note">
-        <b>Allergens:</b> all dishes can be made gluten-free; vegetarian options marked on the full menu.
-        Let your server know — we adjust where we can.
-      </p>
-      <a href="#favourites" class="btn">View Full Menu
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-    </div><!-- /.ff-frame -->
-  </div>
-</section>
-
-<!-- ============ REVIEWS ============ -->
-<section class="section cream" id="reviews">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">03 — Reviews</span>
-        <h2 class="display title reveal d1">What guests <em class="italic-mark">are saying</em></h2>
-      </div>
-      <p class="lede reveal d2">
-        Four-point-nine average across Google, Yelp, OpenTable, and Resy. A small selection from
-        the last few months.
-      </p>
-    </div>
-
-    <div class="reviews-grid">
-      <article class="review reveal">
-        <div class="stars">★★★★★</div>
-        <p class="quote">The Tokyo Fire Ramen is the best bowl I've had this side of the Pacific. The room feels like a film set — warm, low, and lit just right.</p>
-        <div class="author">
-          <div class="avatar">MR</div>
-          <div class="who"><span class="n">Mika R.</span><span class="src">Google · Mar 2026</span></div>
-        </div>
-      </article>
-
-      <article class="review reveal d1">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Came for dinner, stayed for a second round. The Seoul Crunch Bowl is exactly the right amount of crunchy, sweet, and on-fire. Staff are lovely.</p>
-        <div class="author">
-          <div class="avatar">TW</div>
-          <div class="who"><span class="n">Theo W.</span><span class="src">Yelp · Feb 2026</span></div>
-        </div>
-      </article>
-
-      <article class="review reveal d2">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Bao buns slap. The dining room is gorgeous — Studio Ghibli mural, paper lanterns, the works. Already booked again for next month.</p>
-        <div class="author">
-          <div class="avatar">AP</div>
-          <div class="who"><span class="n">Aria P.</span><span class="src">OpenTable · Feb 2026</span></div>
-        </div>
-      </article>
-    </div>
-
-    <div class="reviews-stats reveal">
-      <div class="stat"><div class="n">4.9<em>★</em></div><div class="l">Average rating</div></div>
-      <div class="stat"><div class="n">1,247</div><div class="l">Verified reviews</div></div>
-      <div class="stat"><div class="n">96<em>%</em></div><div class="l">Would return</div></div>
-      <div class="stat"><div class="n">#3</div><div class="l">Asian fusion · East Village</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PICKUP / DELIVERY ============ -->
-<section class="section ink-2" id="order">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">04 — Order</span>
-        <h2 class="display title reveal d1">Pickup &amp; <em class="italic-mark">Delivery</em></h2>
-      </div>
-      <p class="lede reveal d2">
-        Eat in the dining room, take it to the park, or stay on the couch. Three ways in —
-        whichever fits your night.
-      </p>
-    </div>
-
-    <div class="order-grid">
-      <article class="order-card reveal">
-        <div class="order-glyph">店</div>
-        <span class="num">01 · IN-HOUSE</span>
-        <h3>Pickup</h3>
-        <p class="lede">Order ahead and skip the line. Ready at the host stand in 15–20 minutes, paper-bagged and labelled.</p>
-        <div class="meta">
-          <div class="r"><span>Ready in</span><b>15 – 20 min</b></div>
-          <div class="r"><span>Service fee</span><b>None</b></div>
-          <div class="r"><span>Available</span><b>Tue – Sun · 5pm</b></div>
-        </div>
-        <a class="btn ghost" href="#">Order Pickup
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </article>
-
-      <article class="order-card feature reveal d1">
-        <div class="order-glyph">配</div>
-        <span class="num">02 · TO YOU</span>
-        <h3>Delivery</h3>
-        <p class="lede">DoorDash and Uber Eats covering a 3-mile radius; our own couriers within 1 mile from 6pm on weekends.</p>
-        <div class="meta">
-          <div class="r"><span>Range</span><b>3-mile radius</b></div>
-          <div class="r"><span>ETA</span><b>30 – 45 min</b></div>
-          <div class="r"><span>Min order</span><b>$25</b></div>
-        </div>
-        <a class="btn" href="#">Order Delivery
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </article>
-
-      <article class="order-card reveal d2">
-        <div class="order-glyph">献</div>
-        <span class="num">03 · BROWSE</span>
-        <h3>Full Menu</h3>
-        <p class="lede">All 47 dishes, every cocktail, the late-night menu, and the rotating chef's tasting. Add to bag from the menu page.</p>
-        <div class="meta">
-          <div class="r"><span>Dishes</span><b>47 + specials</b></div>
-          <div class="r"><span>Cocktails</span><b>12 + sake list</b></div>
-          <div class="r"><span>Updated</span><b>Weekly</b></div>
-        </div>
-        <a class="btn ghost" href="#favourites">View Full Menu
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="section cream" id="contact">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow reveal">05 — Visit</span>
-        <h2 class="display title reveal d1">Find us, <em class="italic-mark">write us</em></h2>
-      </div>
-      <p class="lede reveal d2">
-        Drop in for dinner, send us a question, or book a private buyout. Mondays we're closed —
-        the rest of the week we're open until 1am.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <dl>
-          <dt>Address</dt>
-          <dd>221 Lantern Street<br/>East Village · New York, NY 10009</dd>
-
-          <dt>Phone</dt>
-          <dd><a href="tel:+14155550142">(415) 555-0142</a></dd>
-
-          <dt>Email</dt>
-          <dd><a href="mailto:hi@foodinator.co">hi@foodinator.co</a></dd>
-
-          <dt>Hours</dt>
-          <dd>
-            <b>Tue – Thu</b> · 5pm – 11pm<br/>
-            <b>Fri – Sat</b> · 5pm – 1am<br/>
-            <b>Sun</b> · 5pm – 10pm<br/>
-            <b>Mon</b> · Closed
-          </dd>
-
-          <dt>Press</dt>
-          <dd><a href="mailto:press@foodinator.co">press@foodinator.co</a></dd>
-        </dl>
-
-        <div class="map-card">
-          <div class="pin"><span>★</span></div>
-          <div class="corner">221 Lantern St</div>
-        </div>
-
-        <div>
-          <a href="#" class="btn">Get Directions
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="hero-ctas reveal d3">
+          <a href="#favourites" class="btn xl"
+            >View Full Menu
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </a>
+          <a href="#order" class="btn ghost lg">Order Pickup</a>
+          <a href="#contact" class="btn ghost lg">Find Us</a>
         </div>
       </div>
 
-      <form class="contact-form reveal d1" onsubmit="event.preventDefault(); this.querySelector('.submit-row .note').textContent = 'Message sent — we\'ll be in touch within one business day.';">
-        <div class="row">
-          <div class="field">
-            <label for="cf-name">Name</label>
-            <input id="cf-name" name="name" type="text" placeholder="Your name" required />
+      <div class="hero-bottom-bar">
+        <span class="scroll-cue"><span class="line"></span>Scroll</span>
+        <div class="links">
+          <span>221 Lantern St · East Village</span>
+          <span style="color: var(--accent)">★ 4.9 · 1,247 reviews</span>
+          <span>(415) 555-0142</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section cream" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">01 — About</span>
+            <h2 class="display title reveal d1">
+              About <em class="italic-mark">Foodinator</em>
+            </h2>
           </div>
-          <div class="field">
-            <label for="cf-email">Email</label>
-            <input id="cf-email" name="email" type="email" placeholder="you@email.com" required />
+          <p class="lede reveal d2">
+            A two-chef kitchen, a 36-seat dining room, and a soundtrack that
+            runs from city pop to late-90s anime ED themes. Foodinator opened in
+            2024 with one idea: serve the food we always wanted to eat after a
+            long shift, in a room we always wanted to sit in.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <h3>Fusion that <em>actually</em> fuses.</h3>
+            <p>
+              Chef Mei trained in Osaka. Chef Kenji grew up in his family's
+              Seoul fried-chicken joint. The menu sits at the intersection —
+              handmade ramen finished with gochujang butter, karaage tossed in a
+              yuzu glaze, dumplings filled with miso-braised short rib.
+            </p>
+            <p>
+              The dining room nods to the kitchens we cooked our way through as
+              kids — paper lanterns, a hand-painted mural of the alleyway in
+              <em>Spirited Away</em>, leather booths the colour of tonkatsu
+              sauce. It's a restaurant first, a love letter second.
+            </p>
+
+            <div class="about-features">
+              <div class="about-feature">
+                <div class="ico"><span>i</span></div>
+                <h4>Hand-made daily</h4>
+                <p>
+                  Noodles, dumpling wrappers, and broths from scratch every
+                  morning.
+                </p>
+              </div>
+              <div class="about-feature">
+                <div class="ico"><span>i</span></div>
+                <h4>Open late</h4>
+                <p>
+                  Kitchen runs Tue – Sun until 1am. Late-night menu after 11pm.
+                </p>
+              </div>
+              <div class="about-feature">
+                <div class="ico"><span>i</span></div>
+                <h4>36 seats</h4>
+                <p>
+                  Small dining room. Reservations recommended Thursday –
+                  Saturday.
+                </p>
+              </div>
+              <div class="about-feature">
+                <div class="ico"><span>i</span></div>
+                <h4>Local sourcing</h4>
+                <p>
+                  Produce from the Union Square greenmarket; fish from the
+                  Bronx.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual reveal d2">
+            <div class="stack"></div>
+            <div class="corner-tag">The Dining Room</div>
+            <div class="vert-meta">店内</div>
+            <div class="ph"></div>
           </div>
         </div>
-        <div class="field">
-          <label for="cf-topic">What's it about?</label>
-          <input id="cf-topic" name="topic" type="text" placeholder="Reservation · Private event · Press · Other" />
+      </div>
+    </section>
+
+    <!-- ============ FAN FAVOURITES ============ -->
+    <section class="section ink" id="favourites">
+      <div class="container">
+        <div class="ff-frame">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow reveal">02 — The Menu</span>
+              <h2 class="display title reveal d1">
+                Fan <em class="italic-mark">Favourites</em>
+              </h2>
+            </div>
+            <p class="lede reveal d2">
+              The dishes our regulars order on repeat. Updated every season —
+              the full list is on the menu page.
+            </p>
+          </div>
+
+          <div class="menu-bar reveal">
+            <div class="menu-filters">
+              <button class="active" data-filter="all">All</button>
+              <button data-filter="ramen">Ramen &amp; Noodles</button>
+              <button data-filter="rice">Rice Bowls</button>
+              <button data-filter="small">Small Plates</button>
+              <button data-filter="sweets">Sweets</button>
+            </div>
+            <a href="#favourites" class="menu-link">View the full menu →</a>
+          </div>
+
+          <div class="menu-grid">
+            <article class="dish reveal">
+              <div class="img" data-label="Ramen · #001"></div>
+              <span class="tag">Best Seller</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Tokyo Fire Ramen</div>
+                  <div class="price">$18</div>
+                </div>
+                <p class="desc">
+                  Volcano tonkotsu, chashu pork belly, 6-min egg, house chili
+                  crisp, scallion oil.
+                </p>
+                <div class="meta">
+                  <span>Lv. 3 spice</span><span>Contains pork</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+
+            <article class="dish reveal d1">
+              <div class="img" data-label="Bowl · #002"></div>
+              <span class="tag alt">Chef's Pick</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Seoul Crunch Bowl</div>
+                  <div class="price">$16</div>
+                </div>
+                <p class="desc">
+                  Korean fried chicken, gochujang glaze, kimchi slaw, sesame,
+                  jasmine rice.
+                </p>
+                <div class="meta">
+                  <span>Lv. 2 spice</span><span>Gluten-free option</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+
+            <article class="dish reveal d2">
+              <div class="img" data-label="Small Plates · #003"></div>
+              <span class="tag dark">New</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Dragon Roll Tacos</div>
+                  <div class="price">$15</div>
+                </div>
+                <p class="desc">
+                  Spicy tuna, avocado, cucumber, micro shiso — folded into
+                  crispy nori shells, three to a plate.
+                </p>
+                <div class="meta">
+                  <span>Lv. 1 spice</span><span>Contains raw fish</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+
+            <article class="dish reveal d3">
+              <div class="img" data-label="Noodles · #004"></div>
+              <span class="tag alt">Chef's Pick</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Miso Carbonara Udon</div>
+                  <div class="price">$17</div>
+                </div>
+                <p class="desc">
+                  Hand-pulled udon, miso-cream sauce, guanciale, soft egg yolk,
+                  cracked black pepper.
+                </p>
+                <div class="meta">
+                  <span>Contains pork</span><span>Contains dairy</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+
+            <article class="dish reveal d4">
+              <div class="img" data-label="Small Plates · #005"></div>
+              <span class="tag dark">New</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Bao Buns Supreme</div>
+                  <div class="price">$14</div>
+                </div>
+                <p class="desc">
+                  A trio of steamed buns — pork belly, crispy tofu, chili
+                  shrimp. Pickles, cilantro.
+                </p>
+                <div class="meta">
+                  <span>Set of 3</span><span>Veg option available</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+
+            <article class="dish reveal d5">
+              <div class="img" data-label="Sweets · #006"></div>
+              <span class="tag">Best Seller</span>
+              <div class="body">
+                <div class="row">
+                  <div class="name">Matcha Lava Cake</div>
+                  <div class="price">$10</div>
+                </div>
+                <p class="desc">
+                  Molten matcha centre, dark chocolate shell, black-sesame ice
+                  cream, caramelised rice tuile.
+                </p>
+                <div class="meta">
+                  <span>Contains dairy</span><span>Contains nuts</span>
+                </div>
+              </div>
+              <button class="add" aria-label="Add to order">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </article>
+          </div>
+
+          <div class="menu-footer reveal">
+            <p class="note">
+              <b>Allergens:</b> all dishes can be made gluten-free; vegetarian
+              options marked on the full menu. Let your server know — we adjust
+              where we can.
+            </p>
+            <a href="#favourites" class="btn"
+              >View Full Menu
+              <svg
+                class="arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
         </div>
-        <div class="field">
-          <label for="cf-msg">Message</label>
-          <textarea id="cf-msg" name="message" placeholder="Tell us what you're after — we read everything."></textarea>
+        <!-- /.ff-frame -->
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="section cream" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">03 — Reviews</span>
+            <h2 class="display title reveal d1">
+              What guests <em class="italic-mark">are saying</em>
+            </h2>
+          </div>
+          <p class="lede reveal d2">
+            Four-point-nine average across Google, Yelp, OpenTable, and Resy. A
+            small selection from the last few months.
+          </p>
         </div>
-        <div class="submit-row">
-          <span class="note">We reply within one business day.</span>
-          <button type="submit" class="btn">Send Message
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
+
+        <div class="reviews-grid">
+          <article class="review reveal">
+            <div class="stars">★★★★★</div>
+            <p class="quote">
+              The Tokyo Fire Ramen is the best bowl I've had this side of the
+              Pacific. The room feels like a film set — warm, low, and lit just
+              right.
+            </p>
+            <div class="author">
+              <div class="avatar">MR</div>
+              <div class="who">
+                <span class="n">Mika R.</span
+                ><span class="src">Google · Mar 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review reveal d1">
+            <div class="stars">★★★★★</div>
+            <p class="quote">
+              Came for dinner, stayed for a second round. The Seoul Crunch Bowl
+              is exactly the right amount of crunchy, sweet, and on-fire. Staff
+              are lovely.
+            </p>
+            <div class="author">
+              <div class="avatar">TW</div>
+              <div class="who">
+                <span class="n">Theo W.</span
+                ><span class="src">Yelp · Feb 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review reveal d2">
+            <div class="stars">★★★★★</div>
+            <p class="quote">
+              Bao buns slap. The dining room is gorgeous — Studio Ghibli mural,
+              paper lanterns, the works. Already booked again for next month.
+            </p>
+            <div class="author">
+              <div class="avatar">AP</div>
+              <div class="who">
+                <span class="n">Aria P.</span
+                ><span class="src">OpenTable · Feb 2026</span>
+              </div>
+            </div>
+          </article>
         </div>
-      </form>
-    </div>
-  </div>
-</section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="container">
-    <h2 class="wordmark reveal">Foodinator<span class="mark">★</span></h2>
-
-    <div class="footer-cols">
-      <div class="blurb">
-        <p>A late-night Asian fusion kitchen in the East Village. Open Tuesday through Sunday.</p>
-        <div class="newsletter">
-          <input type="email" placeholder="Email · for menu drops &amp; openings" />
-          <button type="button">Join</button>
+        <div class="reviews-stats reveal">
+          <div class="stat">
+            <div class="n">4.9<em>★</em></div>
+            <div class="l">Average rating</div>
+          </div>
+          <div class="stat">
+            <div class="n">1,247</div>
+            <div class="l">Verified reviews</div>
+          </div>
+          <div class="stat">
+            <div class="n">96<em>%</em></div>
+            <div class="l">Would return</div>
+          </div>
+          <div class="stat">
+            <div class="n">#3</div>
+            <div class="l">Asian fusion · East Village</div>
+          </div>
         </div>
       </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#favourites">Fan Favourites</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#favourites">Full Menu</a></li>
-        </ul>
+    </section>
+
+    <!-- ============ PICKUP / DELIVERY ============ -->
+    <section class="section ink-2" id="order">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">04 — Order</span>
+            <h2 class="display title reveal d1">
+              Pickup &amp; <em class="italic-mark">Delivery</em>
+            </h2>
+          </div>
+          <p class="lede reveal d2">
+            Eat in the dining room, take it to the park, or stay on the couch.
+            Three ways in — whichever fits your night.
+          </p>
+        </div>
+
+        <div class="order-grid">
+          <article class="order-card reveal">
+            <div class="order-glyph">店</div>
+            <span class="num">01 · IN-HOUSE</span>
+            <h3>Pickup</h3>
+            <p class="lede">
+              Order ahead and skip the line. Ready at the host stand in 15–20
+              minutes, paper-bagged and labelled.
+            </p>
+            <div class="meta">
+              <div class="r"><span>Ready in</span><b>15 – 20 min</b></div>
+              <div class="r"><span>Service fee</span><b>None</b></div>
+              <div class="r"><span>Available</span><b>Tue – Sun · 5pm</b></div>
+            </div>
+            <a class="btn ghost" href="#"
+              >Order Pickup
+              <svg
+                class="arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="order-card feature reveal d1">
+            <div class="order-glyph">配</div>
+            <span class="num">02 · TO YOU</span>
+            <h3>Delivery</h3>
+            <p class="lede">
+              DoorDash and Uber Eats covering a 3-mile radius; our own couriers
+              within 1 mile from 6pm on weekends.
+            </p>
+            <div class="meta">
+              <div class="r"><span>Range</span><b>3-mile radius</b></div>
+              <div class="r"><span>ETA</span><b>30 – 45 min</b></div>
+              <div class="r"><span>Min order</span><b>$25</b></div>
+            </div>
+            <a class="btn" href="#"
+              >Order Delivery
+              <svg
+                class="arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="order-card reveal d2">
+            <div class="order-glyph">献</div>
+            <span class="num">03 · BROWSE</span>
+            <h3>Full Menu</h3>
+            <p class="lede">
+              All 47 dishes, every cocktail, the late-night menu, and the
+              rotating chef's tasting. Add to bag from the menu page.
+            </p>
+            <div class="meta">
+              <div class="r"><span>Dishes</span><b>47 + specials</b></div>
+              <div class="r"><span>Cocktails</span><b>12 + sake list</b></div>
+              <div class="r"><span>Updated</span><b>Weekly</b></div>
+            </div>
+            <a class="btn ghost" href="#favourites"
+              >View Full Menu
+              <svg
+                class="arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </article>
+        </div>
       </div>
-      <div>
-        <h4>Order</h4>
-        <ul>
-          <li><a href="#order">Pickup</a></li>
-          <li><a href="#order">Delivery</a></li>
-          <li><a href="#contact">Reservations</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section cream" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">05 — Visit</span>
+            <h2 class="display title reveal d1">
+              Find us, <em class="italic-mark">write us</em>
+            </h2>
+          </div>
+          <p class="lede reveal d2">
+            Drop in for dinner, send us a question, or book a private buyout.
+            Mondays we're closed — the rest of the week we're open until 1am.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <dl>
+              <dt>Address</dt>
+              <dd>221 Lantern Street<br />East Village · New York, NY 10009</dd>
+
+              <dt>Phone</dt>
+              <dd><a href="tel:+14155550142">(415) 555-0142</a></dd>
+
+              <dt>Email</dt>
+              <dd><a href="mailto:hi@foodinator.co">hi@foodinator.co</a></dd>
+
+              <dt>Hours</dt>
+              <dd>
+                <b>Tue – Thu</b> · 5pm – 11pm<br />
+                <b>Fri – Sat</b> · 5pm – 1am<br />
+                <b>Sun</b> · 5pm – 10pm<br />
+                <b>Mon</b> · Closed
+              </dd>
+
+              <dt>Press</dt>
+              <dd>
+                <a href="mailto:press@foodinator.co">press@foodinator.co</a>
+              </dd>
+            </dl>
+
+            <div class="map-card">
+              <div class="pin"><span>★</span></div>
+              <div class="corner">221 Lantern St</div>
+            </div>
+
+            <div>
+              <a href="#" class="btn"
+                >Get Directions
+                <svg
+                  class="arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <form
+            class="contact-form reveal d1"
+            onsubmit="
+              event.preventDefault();
+              this.querySelector('.submit-row .note').textContent =
+                'Message sent — we\'ll be in touch within one business day.';
+            "
+          >
+            <div class="row">
+              <div class="field">
+                <label for="cf-name">Name</label>
+                <input
+                  id="cf-name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="cf-email">Email</label>
+                <input
+                  id="cf-email"
+                  name="email"
+                  type="email"
+                  placeholder="you@email.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="cf-topic">What's it about?</label>
+              <input
+                id="cf-topic"
+                name="topic"
+                type="text"
+                placeholder="Reservation · Private event · Press · Other"
+              />
+            </div>
+            <div class="field">
+              <label for="cf-msg">Message</label>
+              <textarea
+                id="cf-msg"
+                name="message"
+                placeholder="Tell us what you're after — we read everything."
+              ></textarea>
+            </div>
+            <div class="submit-row">
+              <span class="note">We reply within one business day.</span>
+              <button type="submit" class="btn">
+                Send Message
+                <svg
+                  class="arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div>
-        <h4>Visit</h4>
-        <ul>
-          <li><a href="#contact">221 Lantern St</a></li>
-          <li><a href="#contact">East Village, NYC</a></li>
-          <li><a href="#contact">Hours · Tue – Sun</a></li>
-          <li><a href="#">Private Events</a></li>
-        </ul>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container">
+        <h2 class="wordmark reveal">Foodinator<span class="mark">★</span></h2>
+
+        <div class="footer-cols">
+          <div class="blurb">
+            <p>
+              A late-night Asian fusion kitchen in the East Village. Open
+              Tuesday through Sunday.
+            </p>
+            <div class="newsletter">
+              <input
+                type="email"
+                placeholder="Email · for menu drops &amp; openings"
+              />
+              <button type="button">Join</button>
+            </div>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#favourites">Fan Favourites</a></li>
+              <li><a href="#reviews">Reviews</a></li>
+              <li><a href="#favourites">Full Menu</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Order</h4>
+            <ul>
+              <li><a href="#order">Pickup</a></li>
+              <li><a href="#order">Delivery</a></li>
+              <li><a href="#contact">Reservations</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Visit</h4>
+            <ul>
+              <li><a href="#contact">221 Lantern St</a></li>
+              <li><a href="#contact">East Village, NYC</a></li>
+              <li><a href="#contact">Hours · Tue – Sun</a></li>
+              <li><a href="#">Private Events</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Fine Print</h4>
+            <ul>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Accessibility</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bot">
+          <span>© 2026 Foodinator LLC · All rights reserved</span>
+          <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
+            <a href="#">Spotify</a>
+          </div>
+        </div>
       </div>
-      <div>
-        <h4>Fine Print</h4>
-        <ul>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Accessibility</a></li>
-        </ul>
-      </div>
-    </div>
+    </footer>
 
-    <div class="footer-bot">
-      <span>© 2026 Foodinator LLC · All rights reserved</span>
-      <div class="socials">
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="#">Facebook</a>
-        <a href="#">Spotify</a>
-      </div>
-    </div>
-  </div>
-</footer>
+    <script>
+      // ===== Intro animation =====
+      (function () {
+        const intro = document.getElementById("intro");
+        const vid = document.getElementById("intro-vid");
+        const top = document.querySelector(".intro-half.top");
+        const bot = document.querySelector(".intro-half.bot");
+        const slash = document.getElementById("intro-slash");
+        const skip = document.getElementById("intro-skip");
+        const fill     = document.getElementById("intro-progress-fill");
+        const progress = document.getElementById("intro-progress-wrap");
 
-<script>
-  // Sticky nav
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+        document.body.style.overflow = "hidden";
 
-  // Mobile menu
-  const ham = document.getElementById('hamburger');
-  const mm = document.getElementById('mobileMenu');
-  ham.addEventListener('click', () => {
-    const open = ham.classList.toggle('open');
-    mm.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    ham.classList.remove('open');
-    mm.classList.remove('open');
-    document.body.style.overflow = '';
-  }));
+        let rafPending = false;
+        vid.addEventListener("timeupdate", () => {
+          if (!vid.duration || rafPending) return;
+          rafPending = true;
+          requestAnimationFrame(() => {
+            fill.style.transform = "scaleX(" + (vid.currentTime / vid.duration) + ")";
+            rafPending = false;
+          });
+        });
 
-  // Reveal on scroll
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        function triggerSplit() {
+          vid.style.display = "none";
+          progress.style.opacity = "0";
 
-  // Menu filter tabs
-  document.querySelectorAll('.menu-filters button').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('.menu-filters button').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-    });
-  });
-</script>
+          requestAnimationFrame(() => {
+            slash.style.opacity = "1";
 
-</body>
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                slash.style.opacity = "0";
+                top.classList.add("exit");
+                bot.classList.add("exit");
+              });
+            });
+          });
+
+          setTimeout(() => {
+            intro.remove();
+            document.body.style.overflow = "";
+          }, 1600);
+        }
+
+        vid.addEventListener("ended", triggerSplit);
+        skip.addEventListener("click", triggerSplit);
+        vid.addEventListener("error", () => setTimeout(triggerSplit, 300));
+
+        // safety fallback: remove after 12s no matter what
+        setTimeout(() => {
+          if (intro.parentNode) triggerSplit();
+        }, 12000);
+      })();
+
+      // Sticky nav
+      const nav = document.getElementById("nav");
+      const onScroll = () =>
+        nav.classList.toggle("scrolled", window.scrollY > 40);
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Mobile menu
+      const ham = document.getElementById("hamburger");
+      const mm = document.getElementById("mobileMenu");
+      ham.addEventListener("click", () => {
+        const open = ham.classList.toggle("open");
+        mm.classList.toggle("open", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      });
+      mm.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          ham.classList.remove("open");
+          mm.classList.remove("open");
+          document.body.style.overflow = "";
+        }),
+      );
+
+      // Reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Menu filter tabs
+      document.querySelectorAll(".menu-filters button").forEach((b) => {
+        b.addEventListener("click", () => {
+          document
+            .querySelectorAll(".menu-filters button")
+            .forEach((x) => x.classList.remove("active"));
+          b.classList.add("active");
+        });
+      });
+    </script>
+  </body>
 </html>
