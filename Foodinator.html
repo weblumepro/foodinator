@@ -2873,21 +2873,21 @@
 
         document.body.style.overflow = "hidden";
 
-        let rafPending = false;
         let splitTriggered = false;
-        vid.addEventListener("timeupdate", () => {
-          if (!vid.duration || rafPending) return;
-          rafPending = true;
-          requestAnimationFrame(() => {
-            fill.style.transform =
-              "scaleX(" + vid.currentTime / vid.duration + ")";
-            rafPending = false;
-            if (!splitTriggered && vid.currentTime >= vid.duration * 0.88) {
+
+        function tickProgress() {
+          if (vid.duration) {
+            const ratio = vid.currentTime / vid.duration;
+            fill.style.transform = "scaleX(" + ratio + ")";
+            if (!splitTriggered && ratio >= 0.88) {
               splitTriggered = true;
               triggerSplit();
+              return;
             }
-          });
-        });
+          }
+          requestAnimationFrame(tickProgress);
+        }
+        vid.addEventListener("playing", tickProgress, { once: true });
 
         function triggerSplit() {
           vid.pause();
