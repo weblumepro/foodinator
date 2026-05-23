@@ -1831,16 +1831,12 @@
         justify-content: center;
         contain: layout style paint;
         isolation: isolate;
+        background: #000000;
       }
       .intro-half {
         position: fixed;
         inset: -4px;
-        background: radial-gradient(
-          ellipse 60% 60% at 50% 50%,
-          #0d0d0d 12%,
-          #000000 58%,
-          #3b3b3b 100%
-        );
+        background: #000000;
         will-change: transform;
         transform: translate3d(0, 0, 0);
         transform-origin: 50% 50%;
@@ -2036,7 +2032,7 @@
       <div class="intro-half top"></div>
       <div class="intro-half bot"></div>
       <video id="intro-vid" autoplay muted playsinline preload="auto">
-        <source src="chibininja.mp4" type="video/mp4" />
+        <source src="ninja animation.mp4" type="video/mp4" />
       </video>
       <div class="intro-slash" id="intro-slash"></div>
       <div id="intro-progress-wrap">
