@@ -2889,6 +2889,18 @@
         }
         vid.addEventListener("playing", tickProgress, { once: true });
 
+        function tryPlay() {
+          vid.play().catch(() => {
+            intro.addEventListener("touchstart", () => vid.play(), { once: true });
+            intro.addEventListener("click", () => vid.play(), { once: true });
+          });
+        }
+        if (vid.readyState >= 2) {
+          tryPlay();
+        } else {
+          vid.addEventListener("canplay", tryPlay, { once: true });
+        }
+
         function triggerSplit() {
           vid.pause();
           vid.style.display = "none";
