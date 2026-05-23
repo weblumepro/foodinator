@@ -1839,23 +1839,22 @@
         background: #000000;
         will-change: transform;
         transform: translate3d(0, 0, 0);
-        transform-origin: 50% 50%;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
       }
       .intro-half.top {
-        clip-path: polygon(-1% -1%, 101% -1%, -1% 101%);
+        clip-path: polygon(20% -1%, 101% -1%, 101% 101%, 80% 101%);
         transition: transform 1.4s cubic-bezier(0.65, 0, 0.15, 1);
       }
       .intro-half.bot {
-        clip-path: polygon(101% -1%, 101% 101%, -1% 101%);
+        clip-path: polygon(-1% -1%, 20% -1%, 80% 101%, -1% 101%);
         transition: transform 1.4s cubic-bezier(0.65, 0, 0.15, 1);
       }
       .intro-half.top.exit {
-        transform: translate3d(-120vw, -120vh, 0) rotate(-4deg);
+        transform: translate3d(120vw, -120vh, 0) rotate(4deg);
       }
       .intro-half.bot.exit {
-        transform: translate3d(120vw, 120vh, 0) rotate(4deg);
+        transform: translate3d(-120vw, 120vh, 0) rotate(-4deg);
       }
       #intro-vid {
         position: relative;
@@ -1878,10 +1877,10 @@
         inset: 0;
         z-index: 3;
         background: linear-gradient(
-          135deg,
+          45deg,
           transparent 48%,
-          rgba(255, 255, 255, 0.95) 49.2%,
-          rgba(255, 255, 255, 0.95) 50.8%,
+          rgba(255, 255, 255, 0.9) 49.2%,
+          rgba(255, 255, 255, 0.9) 50.8%,
           transparent 52%
         );
         opacity: 0;
@@ -2032,7 +2031,7 @@
       <div class="intro-half top"></div>
       <div class="intro-half bot"></div>
       <video id="intro-vid" autoplay muted playsinline preload="auto">
-        <source src="ninja animation.mp4" type="video/mp4" />
+        <source src="ninja-animation.mp4" type="video/mp4" />
       </video>
       <div class="intro-slash" id="intro-slash"></div>
       <div id="intro-progress-wrap">
@@ -2875,6 +2874,7 @@
         document.body.style.overflow = "hidden";
 
         let rafPending = false;
+        let splitTriggered = false;
         vid.addEventListener("timeupdate", () => {
           if (!vid.duration || rafPending) return;
           rafPending = true;
@@ -2882,23 +2882,27 @@
             fill.style.transform =
               "scaleX(" + vid.currentTime / vid.duration + ")";
             rafPending = false;
+            if (!splitTriggered && vid.currentTime >= vid.duration * 0.88) {
+              splitTriggered = true;
+              triggerSplit();
+            }
           });
         });
 
         function triggerSplit() {
+          vid.pause();
           vid.style.display = "none";
           progress.style.opacity = "0";
 
           requestAnimationFrame(() => {
             slash.style.opacity = "1";
 
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                slash.style.opacity = "0";
-                top.classList.add("exit");
-                bot.classList.add("exit");
-              });
-            });
+            setTimeout(() => {
+              slash.style.opacity = "0";
+              intro.style.background = "transparent";
+              top.classList.add("exit");
+              bot.classList.add("exit");
+            }, 80);
           });
 
           setTimeout(() => {
@@ -2907,8 +2911,8 @@
           }, 1600);
         }
 
-        vid.addEventListener("ended", triggerSplit);
-        skip.addEventListener("click", triggerSplit);
+        vid.addEventListener("ended", () => { if (!splitTriggered) { splitTriggered = true; triggerSplit(); } });
+        skip.addEventListener("click", () => { if (!splitTriggered) { splitTriggered = true; triggerSplit(); } });
         vid.addEventListener("error", () => setTimeout(triggerSplit, 300));
 
         // safety fallback: remove after 12s no matter what
